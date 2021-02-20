@@ -1,0 +1,9 @@
+F:\Git\BDMS\BDMS.Repository\obj\Debug\BDMS.Repository.csprojAssemblyReference.cache
+F:\Git\BDMS\BDMS.Repository\obj\Debug\BDMS.Repository.csproj.CoreCompileInputs.cache
+F:\Git\BDMS\BDMS.Repository\bin\Debug\BDMS.Repository.dll
+F:\Git\BDMS\BDMS.Repository\bin\Debug\BDMS.Repository.pdb
+F:\Git\BDMS\BDMS.Repository\bin\Debug\BDMS.Shared.dll
+F:\Git\BDMS\BDMS.Repository\bin\Debug\BDMS.Shared.pdb
+F:\Git\BDMS\BDMS.Repository\obj\Debug\BDMS.Repository.csproj.CopyComplete
+F:\Git\BDMS\BDMS.Repository\obj\Debug\BDMS.Repository.dll
+F:\Git\BDMS\BDMS.Repository\obj\Debug\BDMS.Repository.pdb

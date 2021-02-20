@@ -1,0 +1,6 @@
+F:\Git\BDMS\BDMS.Shared\bin\Debug\BDMS.Shared.dll
+F:\Git\BDMS\BDMS.Shared\bin\Debug\BDMS.Shared.pdb
+F:\Git\BDMS\BDMS.Shared\obj\Debug\BDMS.Shared.csprojAssemblyReference.cache
+F:\Git\BDMS\BDMS.Shared\obj\Debug\BDMS.Shared.csproj.CoreCompileInputs.cache
+F:\Git\BDMS\BDMS.Shared\obj\Debug\BDMS.Shared.dll
+F:\Git\BDMS\BDMS.Shared\obj\Debug\BDMS.Shared.pdb

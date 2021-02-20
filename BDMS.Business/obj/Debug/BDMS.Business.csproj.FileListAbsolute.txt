@@ -1,0 +1,11 @@
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Business.dll
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Business.pdb
+F:\Git\BDMS\BDMS.Business\obj\Debug\BDMS.Business.csprojAssemblyReference.cache
+F:\Git\BDMS\BDMS.Business\obj\Debug\BDMS.Business.csproj.CoreCompileInputs.cache
+F:\Git\BDMS\BDMS.Business\obj\Debug\BDMS.Business.dll
+F:\Git\BDMS\BDMS.Business\obj\Debug\BDMS.Business.pdb
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Repository.dll
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Shared.dll
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Repository.pdb
+F:\Git\BDMS\BDMS.Business\bin\Debug\BDMS.Shared.pdb
+F:\Git\BDMS\BDMS.Business\obj\Debug\BDMS.Business.csproj.CopyComplete
