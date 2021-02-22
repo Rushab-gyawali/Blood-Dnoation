@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace MVCERP.Shared.Common
+namespace BDMS.Shared.Common
 {
    public class DbResponse
     {

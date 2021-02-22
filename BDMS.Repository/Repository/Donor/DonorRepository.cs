@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BDMS.Shared.Common;
-using MVCERP.Repository.Repository;
-using MVCERP.Shared.Common;
 
 namespace BDMS.Repository.Repository.Donor
 {

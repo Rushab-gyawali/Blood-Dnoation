@@ -43,9 +43,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Common\CommonRepository.cs" />
+    <Compile Include="Repository\Common\ICommonRepository.cs" />
     <Compile Include="Repository\Donor\DonorRepository.cs" />
     <Compile Include="Repository\Donor\IDonorRepository.cs" />
+    <Compile Include="Repository\Error\ErrorRepo.cs" />
+    <Compile Include="Repository\Error\IErrorRepo.cs" />
     <Compile Include="Repository\RepositoryDao.cs" />
+    <Compile Include="Repository\StaticData\IStaticDataRepository.cs" />
+    <Compile Include="Repository\StaticData\StaticDataRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BDMS.Shared\BDMS.Shared.csproj">

@@ -5,9 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using BDMS.Repository.Repository.Donor;
 using BDMS.Shared.Common;
-using MVCERP.Shared.Common;
 
-namespace BDMS.Business.Business.User
+namespace BDMS.Business.Business.Donor
 {
     public class DonorBusiness : IDonorBusiness
     {

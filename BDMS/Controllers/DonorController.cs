@@ -1,4 +1,4 @@
-﻿using BDMS.Business.Business.User;
+﻿using BDMS.Business.Business.Donor;
 using BDMS.Models;
 using BDMS.Shared.Common;
 using MVCERP.Web.Library;
@@ -79,7 +79,7 @@ namespace BDMS.Controllers
                 common.WardNo = Convert.ToInt32(model.WardNo);
                 common.CreatedBy = model.CreatedBy;
                 var response = buss.New(common);
-                StaticData.SetMessageInSession(response);
+              //  StaticData.SetMessageInSession(response);
                 if (response.ErrorCode == 0)
                 {
                     ModelState.AddModelError("", response.Message);

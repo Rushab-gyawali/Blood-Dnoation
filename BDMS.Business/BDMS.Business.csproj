@@ -41,8 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Business\Common\CommonBusiness.cs" />
+    <Compile Include="Business\Common\ICommonBusiness.cs" />
     <Compile Include="Business\Donor\IDonorBusiness.cs" />
     <Compile Include="Business\Donor\DonorBusiness.cs" />
+    <Compile Include="Business\Error\ErrorBusiness.cs" />
+    <Compile Include="Business\Error\IErrorBusiness.cs" />
+    <Compile Include="Business\StaticData\IStaticDataBusiness.cs" />
+    <Compile Include="Business\StaticData\StaticDataBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +60,9 @@
       <Project>{7a41d4cc-1741-400e-94ea-3e2dfd4ec2fd}</Project>
       <Name>BDMS.Shared</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Business\Logs\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

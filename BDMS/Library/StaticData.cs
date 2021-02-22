@@ -1,8 +1,4 @@
-﻿using ClosedXML.Excel;
-using MVCERP.Shared.Common;
-using MVCERP.Shared.Common.ReportComponent;
-using MVCERP.Web.Filters;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -14,7 +10,7 @@ using System.Web.Mvc;
 
 namespace MVCERP.Web.Library
 {
-    [SessionExpiryFilter]
+    //[SessionExpiryFilter]
     public class StaticData
     {
         #region
@@ -82,33 +78,33 @@ namespace MVCERP.Web.Library
         /// <param name="EngDate">english date in MM/dd/yyyy</param>
         /// <param name="format">Nepali date format if 1 : yyyy-MM-dd, 2 : dd/MM/yyyy, default 0 : MM/dd/yyyy</param>
         /// <returns>returns Nepali Date</returns>
-        public static string ConvertEng_NepDate(string EngDate, int format = 1, string Seperator = "/")
-        {
-            if (String.IsNullOrWhiteSpace(EngDate))
-            {
-                return "";
-            }
-            MVCERP.Shared.Library.NepaliCalender.IConvertToNepali nep = new MVCERP.Shared.Library.NepaliCalender.ConvertToNepali();
-            var dt = nep.GetNepaliDate(DateTime.Parse(EngDate));
-            var returnDt = dt.npDate;
-            if (format == 0)
-            {
-                returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npMonth, dt.npDay, dt.npYear);
-            }
-            else if (format == 1)
-            {
-                returnDt = String.Format("{0}-{1}-{2}", dt.npYear, dt.npMonth, dt.npDay);
-            }
-            else if (format == 2)
-            {
-                returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npDay, dt.npMonth, dt.npYear);
-            }
-            else if (format == 3)
-            {
-                returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npYear, dt.npMonth, dt.npDay);
-            }
-            return returnDt;
-        }
+        //public static string ConvertEng_NepDate(string EngDate, int format = 1, string Seperator = "/")
+        //{
+        //    if (String.IsNullOrWhiteSpace(EngDate))
+        //    {
+        //        return "";
+        //    }
+        //   // MVCERP.Shared.Library.NepaliCalender.IConvertToNepali nep = new MVCERP.Shared.Library.NepaliCalender.ConvertToNepali();
+        //   // var dt = nep.GetNepaliDate(DateTime.Parse(EngDate));
+        //   // var returnDt = dt.npDate;
+        //    if (format == 0)
+        //    {
+        //        returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npMonth, dt.npDay, dt.npYear);
+        //    }
+        //    else if (format == 1)
+        //    {
+        //        returnDt = String.Format("{0}-{1}-{2}", dt.npYear, dt.npMonth, dt.npDay);
+        //    }
+        //    else if (format == 2)
+        //    {
+        //        returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npDay, dt.npMonth, dt.npYear);
+        //    }
+        //    else if (format == 3)
+        //    {
+        //        returnDt = String.Format("{0}" + Seperator + "{1}" + Seperator + "{2}", dt.npYear, dt.npMonth, dt.npDay);
+        //    }
+        //    return returnDt;
+        //}
 
         /// <summary>
         /// current Date
@@ -118,10 +114,10 @@ namespace MVCERP.Web.Library
         {
             return DateTime.Now.ToString("dd/MM/yyyy");
         }
-        public static string GetCurrent_NepDate()
-        {
-            return ConvertEng_NepDate(DateTime.Now.ToString("MM/dd/yyyy"), 1);
-        }
+        //public static string GetCurrent_NepDate()
+        //{
+        //    return ConvertEng_NepDate(DateTime.Now.ToString("MM/dd/yyyy"), 1);
+        //}
         #endregion
 
         public static string NumberToText(string n)
@@ -224,25 +220,25 @@ namespace MVCERP.Web.Library
             return sb.ToString().TrimEnd() + " only";
         }
         
-        public static DbResponse GetSessionMessage()
-        {
-            var resp = HttpContext.Current.Session["Msg"] as MVCERP.Shared.Common.DbResponse;
-            HttpContext.Current.Session.Remove("Msg");
-            return resp;
-        }
-        public static void SetMessageInSession(DbResponse resp)
-        {
-            HttpContext.Current.Session["Msg"] = resp;
-        }
-        public static void SetMessageInSession(int code, string Msg)
-        {
-            var resp = new DbResponse()
-            {
-                ErrorCode = code,
-                Message = Msg
-            };
-            SetMessageInSession(resp);
-        }
+        //public static DbResponse GetSessionMessage()
+        //{
+        //    var resp = HttpContext.Current.Session["Msg"] as MVCERP.Shared.Common.DbResponse;
+        //    HttpContext.Current.Session.Remove("Msg");
+        //    return resp;
+        //}
+        //public static void SetMessageInSession(DbResponse resp)
+        //{
+        //    HttpContext.Current.Session["Msg"] = resp;
+        //}
+        //public static void SetMessageInSession(int code, string Msg)
+        //{
+        //    var resp = new DbResponse()
+        //    {
+        //        ErrorCode = code,
+        //        Message = Msg
+        //    };
+        //    SetMessageInSession(resp);
+        //}
         public static string ReadWebConfig(string key)
         {
             return ReadWebConfig(key, "");
@@ -320,66 +316,66 @@ namespace MVCERP.Web.Library
         /// <param name="path"> folder Name </param>
         /// <param name="CheckContentType">CheckContentType boolean value</param>
         /// <returns></returns>
-        public static DbResponse UploadDoc(HttpPostedFileBase file, string path, bool CheckContentType = true)
-        {
-            var response = new DbResponse();
-            if (file != null && file.ContentLength > 0)
-            {
-                try
-                {
-                    if (CheckContentType)
-                    {
-                        var fileType = file.ContentType;
-                        if (fileType == "image/jpeg" || fileType == "image/png")
-                        {
-                            var docPath = StaticData.GetFilePath();
+        //public static DbResponse UploadDoc(HttpPostedFileBase file, string path, bool CheckContentType = true)
+        //{
+        //    var response = new DbResponse();
+        //    if (file != null && file.ContentLength > 0)
+        //    {
+        //        try
+        //        {
+        //            if (CheckContentType)
+        //            {
+        //                var fileType = file.ContentType;
+        //                if (fileType == "image/jpeg" || fileType == "image/png")
+        //                {
+        //                    var docPath = StaticData.GetFilePath();
 
-                            if (!Directory.Exists(docPath))
-                                Directory.CreateDirectory(docPath);
+        //                    if (!Directory.Exists(docPath))
+        //                        Directory.CreateDirectory(docPath);
 
-                            if (!Directory.Exists(docPath + "\\" + path))
-                                Directory.CreateDirectory(docPath + "\\" + path);
+        //                    if (!Directory.Exists(docPath + "\\" + path))
+        //                        Directory.CreateDirectory(docPath + "\\" + path);
 
-                            string docOrgName = file.FileName;
-                            var docExt = Path.GetExtension(docOrgName);
+        //                    string docOrgName = file.FileName;
+        //                    var docExt = Path.GetExtension(docOrgName);
 
-                        docName:
-                            var docName = DateTime.Now.Ticks + docExt;
-                            docName = @"\" + path + "\\" + docName;
-                            var docToCreate = docPath + "\\" + docName;
+        //                docName:
+        //                    var docName = DateTime.Now.Ticks + docExt;
+        //                    docName = @"\" + path + "\\" + docName;
+        //                    var docToCreate = docPath + "\\" + docName;
 
-                            if (System.IO.File.Exists(docToCreate))
-                                goto docName;
+        //                    if (System.IO.File.Exists(docToCreate))
+        //                        goto docName;
 
-                            if (!string.IsNullOrEmpty(docName))
-                            {
-                                file.SaveAs(docToCreate);
-                                response.ErrorCode = 0;
-                                response.Message = docName;
-                            }
-                        }
-                    }
-                    else
-                    {
-                        response.ErrorCode = 1;
-                        response.Message = "Invalid file format";
-                        return response;
-                    }
-                }
-                catch (Exception e)
-                {
-                    response.ErrorCode = 1;
-                    response.Message = e.Message;
-                }
-            }
-            return response;
-        }
+        //                    if (!string.IsNullOrEmpty(docName))
+        //                    {
+        //                        file.SaveAs(docToCreate);
+        //                        response.ErrorCode = 0;
+        //                        response.Message = docName;
+        //                    }
+        //                }
+        //            }
+        //            else
+        //            {
+        //                response.ErrorCode = 1;
+        //                response.Message = "Invalid file format";
+        //                return response;
+        //            }
+        //        }
+        //        catch (Exception e)
+        //        {
+        //            response.ErrorCode = 1;
+        //            response.Message = e.Message;
+        //        }
+        //    }
+        //    return response;
+        //}
 
         public static string GetActions(string Control, Int64 Id, string ExtraId = "", string AddEdit = "")
         {
             var link = "";
-            if (HasRight(Control, AddEdit))
-            {
+           // if (HasRight(Control, AddEdit))
+          // {
                 var enc = Base64Encode_URL(ExtraId.ToString());
                 if (Control.ToLower() == "taskmanager")
                 {
@@ -403,91 +399,91 @@ namespace MVCERP.Web.Library
 
                 }
 
-            }
+           // }
 
             return link;
         }
-        public static string GetSubActions(string Control, int Id, string ParentId = "")
-        {
-            var link = "";
+        //public static string GetSubActions(string Control, int Id, string ParentId = "")
+        //{
+        //    var link = "";
 
-            if (HasRight(Control, "d"))
-            {
-                //link += "<a href='/" + Control + "/SubDelete/" + Id + "' onclick=' return ConfirmDelete();'  class='btn-action'><i class='mdi mdi-remove'></i></a>";
-            }
-            if (HasRight(Control, "a"))
-            {
-                link += "<a href='/" + Control + "/SubManage/?id=" + ParentId + "&rowId=" + Id + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
-            }
-            if (Control.ToLower() == "branch" && !string.IsNullOrWhiteSpace(ParentId))
-            {
-                link += "<a href='/" + Control + "/SubList/" + Id + "'  class='btn-action' title='Sub List'><i class='mdi mdi-settings'></i></a>";
-            }
-            else if (Control.ToLower() == "branch")
-            {
-                link += "<a href='/" + Control + "/BM/" + Id + "'  class='btn-action' title='BM Setting'><i class='mdi mdi-account'></i></a>";
-            }
-            else if (Control.ToLower() == "staticdata")
-            {
-                link += "<a href='/" + Control + "/Manage/?id" + Id + "&code='" + ParentId + "  class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
-            }
-            return link;
-        }
-        public static bool HasRight(string ControllerName, string Action)
-        {
-            if (GetUser() == "admin")
-            {
-                return true;
-            }
-            if (string.IsNullOrWhiteSpace(ControllerName))
-                return false;
+        //    if (HasRight(Control, "d"))
+        //    {
+        //        //link += "<a href='/" + Control + "/SubDelete/" + Id + "' onclick=' return ConfirmDelete();'  class='btn-action'><i class='mdi mdi-remove'></i></a>";
+        //    }
+        //    if (HasRight(Control, "a"))
+        //    {
+        //        link += "<a href='/" + Control + "/SubManage/?id=" + ParentId + "&rowId=" + Id + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
+        //    }
+        //    if (Control.ToLower() == "branch" && !string.IsNullOrWhiteSpace(ParentId))
+        //    {
+        //        link += "<a href='/" + Control + "/SubList/" + Id + "'  class='btn-action' title='Sub List'><i class='mdi mdi-settings'></i></a>";
+        //    }
+        //    else if (Control.ToLower() == "branch")
+        //    {
+        //        link += "<a href='/" + Control + "/BM/" + Id + "'  class='btn-action' title='BM Setting'><i class='mdi mdi-account'></i></a>";
+        //    }
+        //    else if (Control.ToLower() == "staticdata")
+        //    {
+        //        link += "<a href='/" + Control + "/Manage/?id" + Id + "&code='" + ParentId + "  class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
+        //    }
+        //    return link;
+        //}
+        //public static bool HasRight(string ControllerName, string Action)
+        //{
+        //    if (GetUser() == "admin")
+        //    {
+        //        return true;
+        //    }
+        //    if (string.IsNullOrWhiteSpace(ControllerName))
+        //        return false;
 
-            var user = ReadSession("UserName", "");
-            return MVCERP.Web.Library.UserMonitor.GetInstance().HasRight(user, ControllerName, Action);
-        }
-        public static bool CheckFunctionId(string ControllerName, string Action = "V")
-        {
-            CheckSession();
+        //    var user = ReadSession("UserName", "");
+        //    return MVCERP.Web.Library.UserMonitor.GetInstance().HasRight(user, ControllerName, Action);
+        //}
+        //public static bool CheckFunctionId(string ControllerName, string Action = "V")
+        //{
+        //    CheckSession();
 
-            long number1 = 0;
-            bool canConvert = long.TryParse(ControllerName, out number1);
-            if (canConvert)
-            {
-                Action = ControllerName;
-            }
-            //return true;
-            if (!HasRight(ControllerName, Action))
-            {
-                var log = new MVCERP.Shared.Common.ErrorLogsCommon()
-                {
-                    Action = "UnAuthorization",
-                    ErrorPage = ControllerName,
-                    ErrorMsg = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"],
-                    ErrorDetail = HttpContext.Current.Request.Browser.Browser + " Version :" + HttpContext.Current.Request.Browser.Version,
-                    User = GetUser()
-                };
-                var buss = new Business.Business.Logs.LogsBusiness();
-                var response = buss.UnAuthorizedLog(log);
+        //    long number1 = 0;
+        //    bool canConvert = long.TryParse(ControllerName, out number1);
+        //    if (canConvert)
+        //    {
+        //        Action = ControllerName;
+        //    }
+        //    //return true;
+        //    if (!HasRight(ControllerName, Action))
+        //    {
+        //        var log = new MVCERP.Shared.Common.ErrorLogsCommon()
+        //        {
+        //            Action = "UnAuthorization",
+        //            ErrorPage = ControllerName,
+        //            ErrorMsg = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"],
+        //            ErrorDetail = HttpContext.Current.Request.Browser.Browser + " Version :" + HttpContext.Current.Request.Browser.Version,
+        //            User = GetUser()
+        //        };
+        //        var buss = new Business.Business.Logs.LogsBusiness();
+        //        var response = buss.UnAuthorizedLog(log);
 
-                //IF INVALID ATTEMPT COUNT EXCEED THE LIMIT AUTO SEND MAIL TO HO AND BLOCK THE USER
-                if (response.ErrorCode.Equals(1))
-                {
-                    if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                    {
-                        HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
-                    }
-                }
-                else
-                {
-                    if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                    {
-                        HttpContext.Current.Response.Redirect("/UnAuthorized");
-                    }
-                }
-                // return "/UnAuthorized";
-            }
-            return true;
-        }
+        //        //IF INVALID ATTEMPT COUNT EXCEED THE LIMIT AUTO SEND MAIL TO HO AND BLOCK THE USER
+        //        if (response.ErrorCode.Equals(1))
+        //        {
+        //            if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //            {
+        //                HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
+        //            }
+        //        }
+        //        else
+        //        {
+        //            if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //            {
+        //                HttpContext.Current.Response.Redirect("/UnAuthorized");
+        //            }
+        //        }
+        //        // return "/UnAuthorized";
+        //    }
+        //    return true;
+        //}
         public static string ReadSession(string key, string defVal)
         {
             try
@@ -526,77 +522,77 @@ namespace MVCERP.Web.Library
             }
         }
 
-        internal static void LogError(HttpException Apperr, string page)
-        {
-            Exception err = Apperr;
-            if (Apperr.InnerException != null)
-                err = Apperr.InnerException;
+        //internal static void LogError(HttpException Apperr, string page)
+        //{
+        //    Exception err = Apperr;
+        //    if (Apperr.InnerException != null)
+        //        err = Apperr.InnerException;
 
-            var errPage = FilterString(page);
-            var errMsg = FilterString(err.Message);
-            var errDetails = FilterString(Apperr.GetHtmlErrorMessage());
+        //    var errPage = FilterString(page);
+        //    var errMsg = FilterString(err.Message);
+        //    var errDetails = FilterString(Apperr.GetHtmlErrorMessage());
 
-            var log = new MVCERP.Shared.Common.ErrorLogsCommon()
-            {
-                ErrorPage = errPage,
-                ErrorMsg = errMsg,
-                ErrorDetail = errDetails,
-                User = GetUser()
-            };
+        //    var log = new MVCERP.Shared.Common.ErrorLogsCommon()
+        //    {
+        //        ErrorPage = errPage,
+        //        ErrorMsg = errMsg,
+        //        ErrorDetail = errDetails,
+        //        User = GetUser()
+        //    };
 
-            var buss = new Business.Business.StaticData.StaticDataBusiness();
-            var response = buss.InsertErrorLog(log);
+        //    var buss = new Business.Business.StaticData.StaticDataBusiness();
+        //    var response = buss.InsertErrorLog(log);
 
-            // Send internal mail to developer
-            if (response.ErrorCode.Equals(1))
-            {
-                if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                {
-                    HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
-                }
-            }
-            else
-            {
-                if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                {
-                    HttpContext.Current.Response.Redirect("/Error?id=" + response.Id);
-                }
-            }
-        }
+        //    // Send internal mail to developer
+        //    if (response.ErrorCode.Equals(1))
+        //    {
+        //        if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //        {
+        //            HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //        {
+        //            HttpContext.Current.Response.Redirect("/Error?id=" + response.Id);
+        //        }
+        //    }
+        //}
 
-        internal static void LogError(string errorMessage, string page)
-        {
-            var errPage = FilterString(page);
-            var errMsg = FilterString(errorMessage);
-            var errDetails = FilterString(errorMessage);
+        //internal static void LogError(string errorMessage, string page)
+        //{
+        //    var errPage = FilterString(page);
+        //    var errMsg = FilterString(errorMessage);
+        //    var errDetails = FilterString(errorMessage);
 
-            var log = new MVCERP.Shared.Common.ErrorLogsCommon()
-            {
-                ErrorPage = errPage,
-                ErrorMsg = errMsg,
-                ErrorDetail = errDetails,
-                User = GetUser()
-            };
+        //    var log = new MVCERP.Shared.Common.ErrorLogsCommon()
+        //    {
+        //        ErrorPage = errPage,
+        //        ErrorMsg = errMsg,
+        //        ErrorDetail = errDetails,
+        //        User = GetUser()
+        //    };
 
-            var buss = new Business.Business.StaticData.StaticDataBusiness();
-            var response = buss.InsertErrorLog(log);
+        //    var buss = new Business.Business.StaticData.StaticDataBusiness();
+        //    var response = buss.InsertErrorLog(log);
 
-            // Send internal mail to developer
-            if (response.ErrorCode.Equals(1))
-            {
-                if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                {
-                    HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
-                }
-            }
-            else
-            {
-                if (!HttpContext.Current.Response.IsRequestBeingRedirected)
-                {
-                    HttpContext.Current.Response.Redirect("/Error?id=" + response.Id);
-                }
-            }
-        }
+        //    // Send internal mail to developer
+        //    if (response.ErrorCode.Equals(1))
+        //    {
+        //        if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //        {
+        //            HttpContext.Current.Response.Redirect("/Home?log=" + response.Id);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (!HttpContext.Current.Response.IsRequestBeingRedirected)
+        //        {
+        //            HttpContext.Current.Response.Redirect("/Error?id=" + response.Id);
+        //        }
+        //    }
+        //}
 
         public static string ReadQueryString(string key, string defVal)
         {
@@ -910,18 +906,18 @@ namespace MVCERP.Web.Library
             return val;
         }
 
-        public static string GetNepaliToADDate(string BSDate)
-        {
-            var conversionfailed = BSDate.Split('/')[2];
-            if(conversionfailed.ToInt()>32)
-            {
-                return "";
-            }
+        //public static string GetNepaliToADDate(string BSDate)
+        //{
+        //    var conversionfailed = BSDate.Split('/')[2];
+        //    if(conversionfailed.ToInt()>32)
+        //    {
+        //        return "";
+        //    }
 
-            var adDate = DipeshNepaliDateConversion.DipeshNepaliDateConverter.convertToAD(BSDate).ToShortDateString();
+        //    var adDate = DipeshNepaliDateConversion.DipeshNepaliDateConverter.convertToAD(BSDate).ToShortDateString();
    
-            return adDate;
-        }
+        //    return adDate;
+        //}
         public static String NepaliNumberSystem(String strVal)
         {
             if (strVal != "" && strVal != null)
@@ -1204,33 +1200,33 @@ namespace MVCERP.Web.Library
                 return (T)formatter.Deserialize(stream);
             }
         }
-        public static void GetClosedXmlExcelSheet(TaskReportingCommon reportComponent)
-        {
-            //reportComponent.ReportTitle = "aa";
-            string documentPath = ConfigurationManager.AppSettings["documentFilePath"];
-            var wb = new XLWorkbook();
-            // Add a DataTable as a worksheet
-            string title = reportComponent.ReportTitle + " From " + reportComponent.TaskStartDate + " To " +
-                            reportComponent.TaskEndDate;
-            var ws = wb.Worksheets.Add(reportComponent.ReportData, reportComponent.ReportTitle);
-            ws.Row(1).InsertRowsAbove(1);
-            ws.Cell("A1").Value = title;
-            ws.Range("A1:K1").Row(1).Merge();
-            var fileNameWithPath = documentPath + "\\" + StaticData.GetUser() + "_" + reportComponent.TaskName + ".xlsx";
-            if (System.IO.File.Exists(fileNameWithPath))
-            {
-                try
-                {
-                    System.IO.File.Delete(fileNameWithPath);
-                }
-                catch (Exception ex)
-                {
-                    //Do something
-                }
-            }
-            string fileUrl = StaticData.GetUrlRoot() + "/Handler/FileHandler.ashx?file=" + StaticData.GetUser() + "_" + reportComponent.TaskName + ".xlsx";
-            reportComponent.ExcelLink = fileUrl;
-            wb.SaveAs(fileNameWithPath);
-        }
+        //public static void GetClosedXmlExcelSheet(TaskReportingCommon reportComponent)
+        //{
+        //    //reportComponent.ReportTitle = "aa";
+        //    string documentPath = ConfigurationManager.AppSettings["documentFilePath"];
+        //    var wb = new XLWorkbook();
+        //    // Add a DataTable as a worksheet
+        //    string title = reportComponent.ReportTitle + " From " + reportComponent.TaskStartDate + " To " +
+        //                    reportComponent.TaskEndDate;
+        //    var ws = wb.Worksheets.Add(reportComponent.ReportData, reportComponent.ReportTitle);
+        //    ws.Row(1).InsertRowsAbove(1);
+        //    ws.Cell("A1").Value = title;
+        //    ws.Range("A1:K1").Row(1).Merge();
+        //    var fileNameWithPath = documentPath + "\\" + StaticData.GetUser() + "_" + reportComponent.TaskName + ".xlsx";
+        //    if (System.IO.File.Exists(fileNameWithPath))
+        //    {
+        //        try
+        //        {
+        //            System.IO.File.Delete(fileNameWithPath);
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            //Do something
+        //        }
+        //    }
+        //    string fileUrl = StaticData.GetUrlRoot() + "/Handler/FileHandler.ashx?file=" + StaticData.GetUser() + "_" + reportComponent.TaskName + ".xlsx";
+        //    reportComponent.ExcelLink = fileUrl;
+        //    wb.SaveAs(fileNameWithPath);
+        //}
     }
 }

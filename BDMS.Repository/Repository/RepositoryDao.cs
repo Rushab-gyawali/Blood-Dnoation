@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Data;
-using MVCERP.Shared.Common;
 using System.Text;
 using System.Reflection;
 using System.Collections.Generic;
 using System.IO;
+using BDMS.Shared.Common;
 
-namespace MVCERP.Repository.Repository
+namespace BDMS.Repository.Repository
 {
     public class RepositoryDao
     {
@@ -229,9 +229,9 @@ namespace MVCERP.Repository.Repository
             }
             return str;
         }
-      public MVCERP.Shared.Common.DbResponse ParseDbResponse(System.Data.DataTable dt)
+      public BDMS.Shared.Common.DbResponse ParseDbResponse(System.Data.DataTable dt)
         {
-            var res = new MVCERP.Shared.Common.DbResponse();
+            var res = new BDMS.Shared.Common.DbResponse();
             //if (dt.Rows.Count > 0)
             //{
             //    res.ErrorCode = Convert.ToInt32(dt.Rows[0][0].ToString());
@@ -245,7 +245,7 @@ namespace MVCERP.Repository.Repository
             return res;
         }
   
-        public MVCERP.Shared.Common.DbResponse ParseDbResponse(string sql)
+        public BDMS.Shared.Common.DbResponse ParseDbResponse(string sql)
         {
             return ParseDbResponse(ExecuteDataTable(sql));
         }
