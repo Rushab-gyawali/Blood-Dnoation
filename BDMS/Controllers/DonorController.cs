@@ -10,9 +10,11 @@ using System.Web.Mvc;
 
 namespace BDMS.Controllers
 {
-    public class DonorController : Controller
+    public class DonorController : Controller   
     {
+
         IDonorBusiness buss;
+      
         public DonorController(IDonorBusiness _buss)
         {
             buss = _buss;
@@ -22,6 +24,7 @@ namespace BDMS.Controllers
         {
             return View();
         }
+
 
         public JsonResult List()
         {
