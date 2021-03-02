@@ -13,6 +13,8 @@ namespace BDMS
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+
+            Bootstrapper.Initialise();
         }
     }
 }

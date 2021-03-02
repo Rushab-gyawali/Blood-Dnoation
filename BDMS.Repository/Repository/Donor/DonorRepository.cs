@@ -38,14 +38,9 @@ namespace BDMS.Repository.Repository.Donor
                           MiddleName = item["FullName"].ToString(),
                           LastName = item["FullName"].ToString(),
                           Gender = item["FullName"].ToString(),
-                          DateOfBirth = Convert.ToDateTime(item["DateOfBirth"]),
                           BloodGroup = item["FullName"].ToString(),
-                          Email = item["FullName"].ToString(),
                           PhoneNo = item["FullName"].ToString(),
-                          //District = item["FullName"].ToString(),
-                          //Munciplity = item["FullName"].ToString(),
-                          //City = item["FullName"].ToString(),
-                          //WardNo = Convert.ToInt32(item["WardNo"]),
+                          City = item["FullName"].ToString(),
                         };
                         sn++;
                         list.Add(common);
@@ -60,21 +55,20 @@ namespace BDMS.Repository.Repository.Donor
         }
         public DbResponse New(DonorCommon model)
         {
-            var sql = "EXEX proc_Donor ";
+            var sql = "EXEC proc_Donor ";
             sql += "@Flag = "  +  dao.FilterString((model.DonorId > 0 ? "U" : "I"));
-            sql += "@FirstName = " + dao.FilterString(model.FirstName);
-            sql += "@MiddleName = " + dao.FilterString(model.FirstName);
-            sql += "@LastName = " + dao.FilterString(model.FirstName);
-            sql += "@Gender = " + dao.FilterString(model.FirstName);
-            sql += "@DateOfBirth = " + dao.FilterString(model.FirstName);
-            sql += "@BloodGroup = " + dao.FilterString(model.FirstName);
-            sql += "@Email = " + dao.FilterString(model.FirstName);
-            sql += "@PhoneNo = " + dao.FilterString(model.FirstName);
-            sql += "@District = " + dao.FilterString(model.FirstName);
-            sql += "@Munciplity = " + dao.FilterString(model.FirstName);
-            sql += "@City = " + dao.FilterString(model.FirstName);
-            sql += "@WardNo = " + dao.FilterString(model.FirstName);
-            sql += "@CreatedBy = " + dao.FilterString(model.FirstName);
+            sql += ",@FirstName = " + dao.FilterString(model.FirstName);
+            sql += ",@MiddleName = " + dao.FilterString(model.MiddleName);
+            sql += ",@LastName = " + dao.FilterString(model.LastName);
+            sql += ",@Gender = " + dao.FilterString(model.Gender);
+            sql += ",@DateOfBirth = " + dao.FilterString(model.DateOfBirth);
+            sql += ",@BloodGroup = " + dao.FilterString(model.BloodGroup);
+            sql += ",@Email = " + dao.FilterString(model.Email);
+            sql += ",@PhoneNo = " + dao.FilterString(model.PhoneNo);
+            sql += ",@District = " + dao.FilterString(model.District);
+            sql += ",@Munciplity = " + dao.FilterString(model.Munciplity);
+            sql += ",@City = " + dao.FilterString(model.City);
+            sql += ",@WardNo = " + model.WardNo;
             if (model.DonorId == 0)
             {
                 return dao.ParseDbResponse(sql);
