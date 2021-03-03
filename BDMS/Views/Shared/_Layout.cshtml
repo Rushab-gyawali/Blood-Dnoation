@@ -22,6 +22,11 @@
     <link rel="stylesheet" href="~/assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="~/assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.18/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.jqueryui.min.css">
 </head>
 
 <body class="body-bg">
@@ -41,7 +46,7 @@
                 <div class="row align-items-center">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="/Donor/Index"><img src="~/assets/images/icon/logo2.png" alt="logo"></a>
+                            <a href="/Home/Index"><img src="~/assets/images/icon/logo2.png" alt="logo"></a>
                         </div>
                     </div>
                     <!-- profile info & task notification -->
@@ -73,9 +78,15 @@
                             <nav>
                                 <ul id="nav_menu">
                                     <li>
-                                        <a href="/Donor/Index">
+                                        <a href="/Home/Index">
                                             <i class="ti-map-home"></i>
                                             <span>Home</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Donor/Index">
+                                            <i class="ti-map-home"></i>
+                                            <span>Donor List</span>
                                         </a>
                                     </li>
                                     <li>
@@ -388,8 +399,13 @@
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <!-- start zingchart js -->
     <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-    <script>zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
         ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];</script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.18/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <!-- all line chart activation -->
     <script src="~/assets/js/line-chart.js"></script>
     <!-- all pie chart -->
@@ -397,6 +413,20 @@
     <!-- others plugins -->
     <script src="~/assets/js/plugins.js"></script>
     <script src="~/assets/js/scripts.js"></script>
+    @RenderSection("Message", required: false)
+    @RenderSection("scripts", required: false)
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>

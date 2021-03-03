@@ -53,7 +53,6 @@ namespace BDMS.Controllers
                 //model.Email = data[0].Email;
                 //model.PhoneNo = data[0].PhoneNo;
                 //model.Password = data[0].Password;
-                ////model.AdminRight = Convert.ToBoolean(data[0].AdminRight);
 
                 return View(model);
             }

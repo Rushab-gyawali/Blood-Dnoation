@@ -8,6 +8,7 @@ namespace BDMS.Shared.Common
 {
     public class DonorCommon : Common
     {
+        public int SNo { get; set; }
         public int DonorId { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }

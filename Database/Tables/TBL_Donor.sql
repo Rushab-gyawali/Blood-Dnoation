@@ -1,18 +1,10 @@
-USE [BLOOD_DONATION]
-GO
-
-/****** Object:  Table [dbo].[TBL_Donor]    Script Date: 2/20/2021 10:11:12 PM ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
 
 CREATE TABLE [dbo].[TBL_Donor](
-	[DonorId] [INT] IDENTITY(1,1) NOT NULL,
+	[DonorId] [INT] IDENTITY(1,1)NOT NULL,
 	[FirstName] [NVARCHAR](100) NOT NULL,
 	[MiddleName] [NVARCHAR](100) NULL,
 	[LastName] [NVARCHAR](100) NOT NULL,
+	[FullName] AS Firstname + ' ' + ISNULL(MiddleName,'') + ' '  + LastName,
 	[Gender] [NVARCHAR](50) NOT NULL,
 	[BateOfBirth] [DATE] NOT NULL,
 	[BloodGroup] [NVARCHAR](100) NOT NULL,
@@ -22,20 +14,16 @@ CREATE TABLE [dbo].[TBL_Donor](
 	[Munciplity] [NVARCHAR](100) NOT NULL,
 	[City] [NVARCHAR](100) NOT NULL,
 	[WardNo] [INT] NOT NULL,
-	[CreatedBy] [NVARCHAR](100) NOT NULL,
-	[CreatedDate] [DATETIME] NULL,
-	[IsActive] [BIT] NULL,
-PRIMARY KEY CLUSTERED 
-(
-	[DonorId] ASC
-)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
-) ON [PRIMARY]
-GO
+	[IsActive] [BIT] DEFAULT ('1') NULL,
+	[CreatedBy] [NVARCHAR](100)NOT NULL,
+	[CreatedDate] [DATETIME] DEFAULT GETDATE() NOT NULL,
+	
+)
 
-ALTER TABLE [dbo].[TBL_Donor] ADD  DEFAULT (GETDATE()) FOR [CreatedDate]
-GO
 
-ALTER TABLE [dbo].[TBL_Donor] ADD  DEFAULT ('1') FOR [IsActive]
-GO
+--select * from tbl_DONOR
+
+
+
 
 

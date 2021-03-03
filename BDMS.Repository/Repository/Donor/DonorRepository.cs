@@ -35,9 +35,7 @@ namespace BDMS.Repository.Repository.Donor
                         {
                           DonorId = Convert.ToInt32(item["DonorId"]),
                           FirstName = item["FullName"].ToString(),
-                          MiddleName = item["FullName"].ToString(),
                           LastName = item["FullName"].ToString(),
-                          Gender = item["FullName"].ToString(),
                           BloodGroup = item["FullName"].ToString(),
                           PhoneNo = item["FullName"].ToString(),
                           City = item["FullName"].ToString(),
