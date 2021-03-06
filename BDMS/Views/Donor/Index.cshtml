@@ -1,7 +1,7 @@
 ﻿@model BDMS.Shared.Common.DonorCommon
 @{ ViewBag.Title = "Donor";
     Layout = "~/Views/Shared/_Layout.cshtml"; }
-<script src="~/assets/js/vendor/datatables/js/jquery.dataTables.min.js"></script>
+
 
 @*
     <th>ID</th>
@@ -10,11 +10,44 @@
     <th>Email</th>
     <th>Phone Number</th>
 *@
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+<script src="~/Scripts/datatable.min.js"></script>
+<script src="~/Scripts/Datatable.boostrap4.min.js"></script>
+
+<div class="col-12 mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="header-title">Data Table Primary</h4>
+            <div class="data-tables datatable-primary">
+                <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <table id="example" class="text-center dataTable no-footer dtr-inline" role="grid" aria-describedby="dataTable2_info" style="width: 1511px;">
+                                <thead class="text-capitalize">
+                                    <tr role="row">
+                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 203px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">S.no</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 384px;" aria-label="Position: activate to sort column ascending">Full Name</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 175px;" aria-label="Office: activate to sort column ascending">Email</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 113px;" aria-label="Age: activate to sort column ascending">Phone No</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 199px;" aria-label="Start Date: activate to sort column ascending">Start Date</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 149px;" aria-label="salary: activate to sort column ascending">salary</th>
+                                    </tr>
+                                </thead>
+
+                            </table>
+                        </div>
+                    </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable2_info" role="status" aria-live="polite">Showing 1 to 10 of 11 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable2_previous"><a href="#" aria-controls="dataTable2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="dataTable2_next"><a href="#" aria-controls="dataTable2" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#AllTaskList').DataTable({
+        $('#example').DataTable({
             "responsive": true,
             "processing": false,
             "serverSide": false,
@@ -22,10 +55,11 @@
             "ajax": {
                 "type": 'z',
                 "dataType": 'json',
-                "url": "/Member/ListUsers",
+                "url": "/Donor/List",
                 "contentType": 'application/json; charset=utf-8',
                 'data': function (data) {
                     return data = JSON.stringify(data);
+                    debugger;
                     console.log(data);
                 }
             },
@@ -41,10 +75,8 @@
             columns: [
                 { 'data': 'ID', "orderable": true, "searchable": true },
                 { 'data': 'FullName', "orderable": true },
-                { 'data': 'UserName', "orderable": true, "searchable": true },
                 { 'data': 'Email', "orderable": true },
                 { 'data': 'PhoneNo', "orderable": true },
-                { 'data': 'Action', "orderable": false },
 
             ],
             "columnDefs":
@@ -57,25 +89,3 @@
 
 </script>
 
-<div class="container listing-container card">
-    <div class="panel-default">
-        <div class="panel-heading list-heading">
-            <div class="panel-body list-body">
-                <div class="table-responsive">
-
-                    <table id="AllTaskList" class="table table-hover" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>Phone Number</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

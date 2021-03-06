@@ -34,11 +34,10 @@ namespace BDMS.Repository.Repository.Donor
                         var common = new DonorCommon()
                         {
                           DonorId = Convert.ToInt32(item["DonorId"]),
-                          FirstName = item["FullName"].ToString(),
-                          LastName = item["FullName"].ToString(),
-                          BloodGroup = item["FullName"].ToString(),
-                          PhoneNo = item["FullName"].ToString(),
-                          City = item["FullName"].ToString(),
+                          FullName = item["FullName"].ToString(),
+                          BloodGroup = item["BloodGroup"].ToString(),
+                          PhoneNo = item["PhoneNo"].ToString(),
+                          Email = item["Email"].ToString(),
                         };
                         sn++;
                         list.Add(common);
