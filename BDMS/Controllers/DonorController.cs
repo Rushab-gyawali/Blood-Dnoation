@@ -26,6 +26,7 @@ namespace BDMS.Controllers
         }
 
 
+        [HttpPost]
         public JsonResult List()
         {
             var data = buss.List();

@@ -10,6 +10,7 @@
     <th>Email</th>
     <th>Phone Number</th>
 *@
+@*<script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>*@
 <script src="~/Scripts/jquery-3.5.1.js"></script>
 <script src="~/Scripts/datatable.min.js"></script>
 <script src="~/Scripts/Datatable.boostrap4.min.js"></script>
@@ -29,8 +30,6 @@
                                         <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 384px;" aria-label="Position: activate to sort column ascending">Full Name</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 175px;" aria-label="Office: activate to sort column ascending">Email</th>
                                         <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 113px;" aria-label="Age: activate to sort column ascending">Phone No</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 199px;" aria-label="Start Date: activate to sort column ascending">Start Date</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 149px;" aria-label="salary: activate to sort column ascending">salary</th>
                                     </tr>
                                 </thead>
 
@@ -53,7 +52,7 @@
             "serverSide": false,
             "searchDelay": 1500,
             "ajax": {
-                "type": 'z',
+                "type": 'POST',
                 "dataType": 'json',
                 "url": "/Donor/List",
                 "contentType": 'application/json; charset=utf-8',
@@ -73,7 +72,7 @@
                 "searchPlaceholder": "Search..."
             },
             columns: [
-                { 'data': 'ID', "orderable": true, "searchable": true },
+                { 'data': 'DonorId', "orderable": true, "searchable": true },
                 { 'data': 'FullName', "orderable": true },
                 { 'data': 'Email', "orderable": true },
                 { 'data': 'PhoneNo', "orderable": true },
