@@ -15,35 +15,27 @@
 <script src="~/Scripts/datatable.min.js"></script>
 <script src="~/Scripts/Datatable.boostrap4.min.js"></script>
 
-<div class="col-12 mt-5">
+<div class="col-lg-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="header-title">Data Table Primary</h4>
-            <div class="data-tables datatable-primary">
-                <div id="dataTable2_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <table id="example" class="text-center dataTable no-footer dtr-inline" role="grid" aria-describedby="dataTable2_info" style="width: 1511px;">
-                                <thead class="text-capitalize">
-                                    <tr role="row">
-                                        <th class="sorting_asc" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 203px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">S.no</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 384px;" aria-label="Position: activate to sort column ascending">Full Name</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 175px;" aria-label="Office: activate to sort column ascending">Email</th>
-                                        <th class="sorting" tabindex="0" aria-controls="dataTable2" rowspan="1" colspan="1" style="width: 113px;" aria-label="Age: activate to sort column ascending">Phone No</th>
-                                    </tr>
-                                </thead>
-
-                            </table>
-                        </div>
-                    </div><div class="row"><div class="col-sm-12 col-md-5"><div class="dataTables_info" id="dataTable2_info" role="status" aria-live="polite">Showing 1 to 10 of 11 entries</div></div><div class="col-sm-12 col-md-7"><div class="dataTables_paginate paging_simple_numbers" id="dataTable2_paginate"><ul class="pagination"><li class="paginate_button page-item previous disabled" id="dataTable2_previous"><a href="#" aria-controls="dataTable2" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li><li class="paginate_button page-item active"><a href="#" aria-controls="dataTable2" data-dt-idx="1" tabindex="0" class="page-link">1</a></li><li class="paginate_button page-item "><a href="#" aria-controls="dataTable2" data-dt-idx="2" tabindex="0" class="page-link">2</a></li><li class="paginate_button page-item next" id="dataTable2_next"><a href="#" aria-controls="dataTable2" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li></ul></div></div></div>
+            <h4 class="header-title">Donor List</h4>
+            <div class="single-table">
+                <div class="table-responsive">
+                    <table id="example" class="table text-center">
+                        <thead class="text-uppercase bg-danger">
+                            <tr class="text-white">
+                                <th>ID</th>
+                                <th>FullName</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                            </tr>
+                        </thead>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
 <script type="text/javascript">
     $(document).ready(function () {
         $('#example').DataTable({
