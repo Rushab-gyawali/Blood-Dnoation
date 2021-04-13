@@ -222,6 +222,7 @@
     </Compile>
     <Compile Include="Library\StaticData.cs" />
     <Compile Include="Models\DonorModel.cs" />
+    <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

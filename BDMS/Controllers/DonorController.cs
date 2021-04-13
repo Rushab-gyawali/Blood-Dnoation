@@ -47,14 +47,6 @@ namespace BDMS.Controllers
             }
             else
             {
-                //var data = buss.GetById(DonorId);
-                //model.ID = data[0].ID.ToString();
-                //model.FullName = data[0].FullName;
-                //model.UserName = data[0].UserName;
-                //model.Email = data[0].Email;
-                //model.PhoneNo = data[0].PhoneNo;
-                //model.Password = data[0].Password;
-
                 return View(model);
             }
         }
