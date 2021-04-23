@@ -1,11 +1,11 @@
-﻿@model.BDMS.Models.DesignationModel
+﻿@model BDMS.Models.DesignationModel
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 @using (Html.BeginForm("New", "Designation", FormMethod.Post, new { @id = "Singupform" }))
-{
+ {
     <div class="card mt-12 card-body">
 
         <form class="needs-validation" novalidate="">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom02">Remarks</label>
-                    @Html.TextAreaFor(d => d.Remarks, new { @class = "form-control", @id = "validationCustom02", @placeholder = "Last Name", required = "" })
+                    @Html.TextBoxFor(d => d.Remarks, new { @class = "form-control", @id = "validationCustom02", @placeholder = "Last Name", required = "" })
                     <div class="valid-feedback">
                         Looks good!
                     </div>
@@ -30,6 +30,6 @@
             </div>
         </form>
     </div>
-}
+ }
 
 

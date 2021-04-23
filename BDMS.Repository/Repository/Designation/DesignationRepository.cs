@@ -34,7 +34,7 @@ namespace BDMS.Repository.Repository.Designation
                         var common = new DesignationCommon()
                         {
                             SNo = sn,
-                            
+                            DesignationName = item["DesignationName"].ToString()
                         };
                         sn++;
                         list.Add(common);

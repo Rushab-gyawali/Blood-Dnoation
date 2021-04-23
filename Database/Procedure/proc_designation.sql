@@ -10,7 +10,7 @@ As
 	Begin
 		If(@Flag = 'List')
 		BEGIN
-		SELECT * FROM TBL_DESIGNATION (NOLOCK)
+		SELECT DesignationId,DesignationName FROM TBL_DESIGNATION (NOLOCK)
 		END
 
 		ELSE IF (@Flag = 'Insert')
@@ -24,9 +24,9 @@ As
 			BEGIN TRY
 			    BEGIN TRANSACTION;			    
 			    INSERT INTO TBL_DESIGNATION
-			    (DesignationId,DesignationName,Remarks,CreatedBy,CreatedDate,IsActive)
+			    (DesignationName,Remarks,CreatedBy,CreatedDate,IsActive)
 				VALUES
-			    ('1',@Designationname,@Remarks,'system',GETDATE(),'1');            
+			    (@Designationname,@Remarks,'system',GETDATE(),'1');            
 			    BEGIN
 			        COMMIT TRANSACTION;
 			        SELECT '0' errorCode,'Designation Added Succesfully' msg;

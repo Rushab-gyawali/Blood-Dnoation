@@ -69,9 +69,9 @@ namespace BDMS.Controllers
                 if (response.ErrorCode == 0)
                 {
                     ModelState.AddModelError("", response.Message);
-                    return View(model);
+                    return RedirectToAction("Index", "Designation");
                 }
-                return RedirectToAction("Index", "Designation");
+                return View(model);
             }
             else
             {
@@ -81,7 +81,7 @@ namespace BDMS.Controllers
 
                 ModelState.AddModelError("", errors);
             }
-            ViewData["msg"] = "An error occured while registering the Donor";
+            ViewData["msg"] = "An error occured while registering the Designation";
             return View(model);
         }
     }
