@@ -249,6 +249,8 @@
     <Content Include="Views\Donor\Index.cshtml" />
     <Content Include="Views\Staff\Index.cshtml" />
     <Content Include="Views\Staff\New.cshtml" />
+    <Content Include="Views\Designation\New.cshtml" />
+    <Content Include="Views\Designation\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -258,7 +260,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Designation\" />
     <Folder Include="Views\Template\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

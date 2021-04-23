@@ -11,7 +11,7 @@ namespace BDMS.Business.Business.Designation
 {
     public class DesignationBusiness : IDesignationBusiness
     {
-        RepositoryDao repo;
+        IDesignationRepository repo;
         
         public DesignationBusiness(IDesignationRepository _repo)
         {
@@ -19,12 +19,12 @@ namespace BDMS.Business.Business.Designation
         }
         public List<DesignationCommon> List()
         {
-            return List.repo();
+            return repo.List();
         }
 
         public DbResponse New(DesignationCommon common)
         {
-            return New.repo(common);
+            return repo.New(common);
         }
     }
 }
