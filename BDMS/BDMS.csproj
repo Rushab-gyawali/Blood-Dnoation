@@ -214,13 +214,16 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="Controllers\DesignationController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StaffController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\StaticData.cs" />
+    <Compile Include="Models\DesignationModel.cs" />
     <Compile Include="Models\DonorModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -244,6 +247,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Donor\New.cshtml" />
     <Content Include="Views\Donor\Index.cshtml" />
+    <Content Include="Views\Staff\Index.cshtml" />
+    <Content Include="Views\Staff\New.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -253,6 +258,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Designation\" />
     <Folder Include="Views\Template\" />
     <Folder Include="Views\User\" />
   </ItemGroup>

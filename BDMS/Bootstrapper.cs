@@ -2,7 +2,9 @@ using System.Web.Mvc;
 using BDMS.Business.Business.Common;
 using BDMS.Business.Business.Donor;
 using BDMS.Business.Business.Error;
+using BDMS.Business.Business.Staff;
 using BDMS.Repository.Repository.Donor;
+using BDMS.Repository.Repository.Staff;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
 
@@ -29,7 +31,8 @@ namespace BDMS
             container.RegisterType<IErrorBusiness, ErrorBusiness>();
             container.RegisterType<IDonorRepository, DonorRepository>();
             container.RegisterType<IDonorBusiness, DonorBusiness>();
-            
+            container.RegisterType<IStaffBusiness, StaffBusiness>();
+            container.RegisterType<IStaffRepository, StaffRepository>();
 
 
             return container;

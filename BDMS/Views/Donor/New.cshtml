@@ -1,16 +1,12 @@
 ﻿@model BDMS.Models.DonorModel
-
 @{
     ViewBag.Title = "New";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
-
-
 @using (Html.BeginForm("New", "Donor", FormMethod.Post, new { @id = "Singupform" }))
  { 
-    <div class="card mt-8">
+    <div class="card mt-12">
         <div class="card-body">
             <form class="needs-validation" novalidate="">
                 <div class="form-row">
@@ -97,7 +93,9 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary" type="submit">Submit</button>
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                </div>
             </form>
         </div>
     </div>

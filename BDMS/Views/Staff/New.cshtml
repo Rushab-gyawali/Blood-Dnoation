@@ -1,0 +1,102 @@
+﻿@model BDMS.Models.StaffModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("New", "Staff", FormMethod.Post, new { @id = "Singupform" }))
+{
+    <div class="card mt-12 card-body">
+
+        <form class="needs-validation" novalidate="">
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom01">First name</label>
+                    @Html.TextBoxFor(d => d.StaffFirstName, new { @class = "form-control", @id = "validationCustom01", @placeholder = "First Name", required = "" })
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label>Last name</label>
+                    @Html.TextBoxFor(d => d.StaffMiddleName, new { @class = "form-control", @placeholder = "Middle Name" })
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom02">Last name</label>
+                    @Html.TextBoxFor(d => d.StaffLastName, new { @class = "form-control", @id = "validationCustom02", @placeholder = "Last Name", required = "" })
+                    <div class="valid-feedback">
+                        Looks good!
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-3 mb-3">
+                    <label for="validationCustom02">Gender</label>
+                    @Html.TextBoxFor(d => d.Gender, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Choode your gender", required = "" })
+                </div>
+                <div class="col-md-3 mb-2">
+                    <label for="validationCustom03">Date Of Birth</label>
+                    @Html.TextBoxFor(d => d.DateOfBirth, new { @Class = "form-control", @id = "example-date-input", @type = "date", required = "" })
+                    <div class="invalid-feedback">
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label for="validationCustom05">Email</label>
+                    @Html.TextBoxFor(d => d.Email, new { @Class = "form-control", @id = "inputHorizontalDnger", @placeholder = "Enter Your Email", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid Email.
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">PhoneNo</label>
+                    @Html.TextBoxFor(d => d.PhoneNo, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your Phone Number", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid Phone Number.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">District</label>
+                    @Html.TextBoxFor(d => d.District, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your District", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid District.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">Munciplity</label>
+                    @Html.TextBoxFor(d => d.Munciplity, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your Munciplity", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid Munciplity.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">City</label>
+                    @Html.TextBoxFor(d => d.City, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your City", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid City.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">WardNo</label>
+                    @Html.TextBoxFor(d => d.WardNo, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your WardNo", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid WardNo.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">StaffAddress</label>
+                    @Html.TextBoxFor(d => d.StaffAddress, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your Address", required = "" })
+                <div class="invalid-feedback">
+                    Please provide a valid Address.
+                </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <button class="btn btn-primary pull-right" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+
+}

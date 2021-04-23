@@ -43,10 +43,15 @@
   <ItemGroup>
     <Compile Include="Business\Common\CommonBusiness.cs" />
     <Compile Include="Business\Common\ICommonBusiness.cs" />
+    <Compile Include="Business\Designation\DesignationBusiness.cs" />
+    <Compile Include="Business\Designation\IDesignationBusiness.cs" />
     <Compile Include="Business\Donor\IDonorBusiness.cs" />
     <Compile Include="Business\Donor\DonorBusiness.cs" />
     <Compile Include="Business\Error\ErrorBusiness.cs" />
     <Compile Include="Business\Error\IErrorBusiness.cs" />
+    <Compile Include="Business\Staff\IStaffBusiness.cs" />
+    <Compile Include="Business\Staff\Repositorydao.cs" />
+    <Compile Include="Business\Staff\StaffBusiness.cs" />
     <Compile Include="Business\StaticData\IStaticDataBusiness.cs" />
     <Compile Include="Business\StaticData\StaticDataBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
