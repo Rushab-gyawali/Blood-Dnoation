@@ -27,5 +27,6 @@ namespace BDMS.Shared.Common
         public string Designation { get; set; }
         public string DateOfBirth { get; set; }
         public string BloodGroup { get; set; }
+        public string Action { get; set; }
     }
 }

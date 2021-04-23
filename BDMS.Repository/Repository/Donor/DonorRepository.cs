@@ -17,6 +17,50 @@ namespace BDMS.Repository.Repository.Donor
 
         }
 
+        public List<DonorCommon> GetDonorsByID(string id)
+        {
+            var list = new List<DonorCommon>();
+            try
+            {
+                var sql = "EXEC proc_Donor ";
+                sql += "@Flag = 'GetDonorById'";
+                sql += ",@DonorId= " + dao.FilterString(id);
+                var dt = dao.ExecuteDataTable(sql);
+
+                if (null != dt)
+                {
+                    int sn = 1;
+                    foreach (System.Data.DataRow item in dt.Rows)
+                    {
+                        var common = new DonorCommon()
+                        {
+                            DonorId = Convert.ToInt32(item["DonorId"]),
+                            FirstName = item["FirstName"].ToString(),
+                            MiddleName = item["MiddleName"].ToString(),
+                            LastName = item["LastName"].ToString(),
+                            Gender = item["Gender"].ToString(),
+                            DateOfBirth = item["DateOfBirth"].ToString(),
+                            BloodGroup = item["BloodGroup"].ToString(),
+                            Email = item["Email"].ToString(),
+                            PhoneNo = item["PhoneNo"].ToString(),
+                            District = item["District"].ToString(),
+                            Munciplity = item["Munciplity"].ToString(),
+                            City = item["City"].ToString(),
+                            WardNo = Convert.ToInt32(item["WardNo"])
+                        };
+                        sn++;
+                        list.Add(common);
+                    }
+                }
+                return list;
+            }
+            catch
+            {
+                return list;
+            }
+           
+        }
+
         public List<DonorCommon> List()
         {
             var list = new List<DonorCommon>();
@@ -66,6 +110,7 @@ namespace BDMS.Repository.Repository.Donor
             sql += ",@Munciplity = " + dao.FilterString(model.Munciplity);
             sql += ",@City = " + dao.FilterString(model.City);
             sql += ",@WardNo = " + model.WardNo;
+            sql += ",@CreatedBy = " + model.CreatedBy;
             if (model.DonorId == 0)
             {
                 return dao.ParseDbResponse(sql);

@@ -17,6 +17,52 @@ namespace BDMS.Repository.Repository.Staff
             dao = new RepositoryDao();
 
         }
+
+        public List<StaffCommon> GetStaffByID(string id)
+        {
+            var list = new List<StaffCommon>();
+            try
+            {
+                var sql = "EXEC proc_Staff ";
+                sql += "@Flag = 'getStaffById'";
+                sql += ",@StaffId = " + dao.FilterString(id);
+                var dt = dao.ExecuteDataTable(sql);
+
+                if (null != dt)
+                {
+                    int sn = 1;
+                    foreach (System.Data.DataRow item in dt.Rows)
+                    {
+                        var common = new StaffCommon()
+                        {
+                            StaffId = Convert.ToInt32(item["StaffId"]),
+                            StaffFirstName = item["StaffFirstName"].ToString(),
+                            StaffMiddleName = item["StaffMiddleName"].ToString(),
+                            StaffLastName = item["StaffLastName"].ToString(),
+                            Gender = item["Gender"].ToString(),
+                            DateOfBirth = item["DateOfBirth"].ToString(),
+                            BloodGroup = item["BloodGroup"].ToString(),
+                            Email = item["Email"].ToString(),
+                            PhoneNo = item["PhoneNo"].ToString(),
+                            District = item["District"].ToString(),
+                            Munciplity = item["Munciplity"].ToString(),
+                            City = item["City"].ToString(),
+                            StaffAddress = item["StaffAddress"].ToString(),
+                            WardNo = Convert.ToInt32(item["WardNo"]),
+                            Designation = item["Designation"].ToString(),
+                        };
+                        sn++;
+                        list.Add(common);
+                    }
+                }
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<StaffCommon> List()
         {
             var list = new List<StaffCommon>();

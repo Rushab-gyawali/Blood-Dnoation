@@ -9,6 +9,7 @@ namespace BDMS.Repository.Repository.Donor
 {
     public interface IDonorRepository
     {
+        List<DonorCommon> GetDonorsByID(string id);
         List<DonorCommon> List();
         DbResponse New(DonorCommon model);
     }

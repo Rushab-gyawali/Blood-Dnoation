@@ -40,14 +40,18 @@ namespace BDMS.Controllers
         public ActionResult New()
         {
             string id = Request.QueryString["id"];
-            var DonorId = StaticData.Base64Encode_URL(id);
-            var model = new DonorModel();
-            if (DonorId == "")
+            var designationId = StaticData.Base64Encode_URL(id);
+            var model = new DesignationModel();
+            if (designationId == "")
             {
                 return View();
             }
             else
             {
+                var data = buss.GetDesignationById(id);
+                model.DesignationId = data[0].DesignationId;
+                model.DesignationName = data[0].DesignationName;
+                model.Remarks = data[0].Remarks;
                 return View(model);
             }
         }

@@ -16,6 +16,12 @@ namespace BDMS.Business.Business.Staff
         {
             repo = _repo;
         }
+
+        public List<StaffCommon> GetStaffByID(string id)
+        {
+            return repo.GetStaffByID(id);
+        }
+
         public List<StaffCommon> List()
         {
             return repo.List();

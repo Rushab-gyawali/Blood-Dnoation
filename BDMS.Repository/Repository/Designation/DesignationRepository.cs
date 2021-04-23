@@ -17,6 +17,42 @@ namespace BDMS.Repository.Repository.Designation
             dao = new RepositoryDao();
 
         }
+
+        public List<DesignationCommon> GetDesignationById(string id)
+        {
+            var list = new List<DesignationCommon>();
+            try
+            {
+                var sql = "EXEC proc_Designation ";
+                sql += "@Flag = 'List'";
+                sql += ",@DesignationId = " + dao.FilterString(id);
+                sql += ",@User = " + dao.FilterString(id);
+                var dt = dao.ExecuteDataTable(sql);
+
+                if (null != dt)
+                {
+                    int sn = 1;
+                    foreach (System.Data.DataRow item in dt.Rows)
+                    {
+                        var common = new DesignationCommon()
+                        {
+                            DesignationId = item["DesignationId"].ToString(),
+                            DesignationName =item["DesignationName"].ToString(),
+                            Remarks =item["Remarks"].ToString(),
+
+                        };
+                        sn++;
+                        list.Add(common);
+                    }
+                }
+                return list;
+            }
+            catch (Exception e)
+            {
+                return list;
+            }
+        }
+
         public List<DesignationCommon> List()
         {
             var list = new List<DesignationCommon>();
@@ -50,29 +86,21 @@ namespace BDMS.Repository.Repository.Designation
 
         public DbResponse New(DesignationCommon common)
         {
-            throw new NotImplementedException();
-            //var sql = "EXEC proc_Donor ";
-            //sql += "@Flag = " + dao.FilterString((model.DonorId > 0 ? "Update" : "Insert"));
-            //sql += ",@FirstName = " + dao.FilterString(model.FirstName);
-            //sql += ",@MiddleName = " + dao.FilterString(model.MiddleName);
-            //sql += ",@LastName = " + dao.FilterString(model.LastName);
-            //sql += ",@Gender = " + dao.FilterString(model.Gender);
-            //sql += ",@DateOfBirth = " + dao.FilterString(model.DateOfBirth);
-            //sql += ",@BloodGroup = " + dao.FilterString(model.BloodGroup);
-            //sql += ",@Email = " + dao.FilterString(model.Email);
-            //sql += ",@PhoneNo = " + dao.FilterString(model.PhoneNo);
-            //sql += ",@District = " + dao.FilterString(model.District);
-            //sql += ",@Munciplity = " + dao.FilterString(model.Munciplity);
-            //sql += ",@City = " + dao.FilterString(model.City);
-            //sql += ",@WardNo = " + model.WardNo;
-            //if (model.DonorId == 0)
-            //{
-            //    return dao.ParseDbResponse(sql);
-            //}
-            //else
-            //{
-            //    return dao.ParseDbResponse(sql);
-            //}
+
+            var sql = "EXEC proc_Donor ";
+            sql += "@Flag = " + dao.FilterString((common.DesignationId == "" ? "Insert":"Update"  ));
+            sql += ",@DesignationId = " + dao.FilterString(common.DesignationId);
+            sql += ",@Designationname = " + dao.FilterString(common.DesignationName);
+            sql += ",@Remarks = " + dao.FilterString(common.Remarks);
+
+            if (common.DesignationId == "")
+            {
+                return dao.ParseDbResponse(sql);
+            }
+            else
+            {
+                return dao.ParseDbResponse(sql);
+            }
         }
     }
 }
