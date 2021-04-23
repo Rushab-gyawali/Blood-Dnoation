@@ -50,29 +50,19 @@ namespace BDMS.Repository.Repository.Designation
 
         public DbResponse New(DesignationCommon common)
         {
-            throw new NotImplementedException();
-            //var sql = "EXEC proc_Donor ";
-            //sql += "@Flag = " + dao.FilterString((model.DonorId > 0 ? "Update" : "Insert"));
-            //sql += ",@FirstName = " + dao.FilterString(model.FirstName);
-            //sql += ",@MiddleName = " + dao.FilterString(model.MiddleName);
-            //sql += ",@LastName = " + dao.FilterString(model.LastName);
-            //sql += ",@Gender = " + dao.FilterString(model.Gender);
-            //sql += ",@DateOfBirth = " + dao.FilterString(model.DateOfBirth);
-            //sql += ",@BloodGroup = " + dao.FilterString(model.BloodGroup);
-            //sql += ",@Email = " + dao.FilterString(model.Email);
-            //sql += ",@PhoneNo = " + dao.FilterString(model.PhoneNo);
-            //sql += ",@District = " + dao.FilterString(model.District);
-            //sql += ",@Munciplity = " + dao.FilterString(model.Munciplity);
-            //sql += ",@City = " + dao.FilterString(model.City);
-            //sql += ",@WardNo = " + model.WardNo;
-            //if (model.DonorId == 0)
-            //{
-            //    return dao.ParseDbResponse(sql);
-            //}
-            //else
-            //{
-            //    return dao.ParseDbResponse(sql);
-            //}
+            //throw new NotImplementedException();
+            var sql = "EXEC proc_Designation ";
+            sql += "@Flag = " + dao.FilterString(common.DesignationId > 0 ? "Update" : "Insert");
+            sql += ",@DesignationName = " + dao.FilterString(common.DesignationName);
+            sql += ",@Remarks = " + dao.FilterString(common.Remarks);
+            if (common.DesignationId == 0)
+            {
+                return dao.ParseDbResponse(sql);
+            }
+            else
+            {
+                return dao.ParseDbResponse(sql);
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace BDMS.Controllers
         {
             string id = Request.QueryString["id"];
             var DonorId = StaticData.Base64Encode_URL(id);
-            var model = new DonorModel();
+            var model = new DesignationModel();
             if (DonorId == "")
             {
                 return View();

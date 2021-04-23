@@ -26,7 +26,7 @@ As
 			    INSERT INTO TBL_DESIGNATION
 			    (DesignationId,DesignationName,Remarks,CreatedBy,CreatedDate,IsActive)
 				VALUES
-			    (@DesignationId,@Designationname,@Remarks,@User,GETDATE(),'1');            
+			    ('1',@Designationname,@Remarks,'system',GETDATE(),'1');            
 			    BEGIN
 			        COMMIT TRANSACTION;
 			        SELECT '0' errorCode,'Designation Added Succesfully' msg;
