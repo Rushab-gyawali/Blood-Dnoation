@@ -63,7 +63,7 @@ namespace BDMS.Controllers
                 common.DesignationId = model.DesignationId;
                 common.DesignationName = model.DesignationName;
                 common.Remarks = model.Remarks;               
-                //common.CreatedBy = model.CreatedBy;
+                common.User = model.User;
                 var response = buss.New(common);
                 //  StaticData.SetMessageInSession(response);
                 if (response.ErrorCode == 0)

@@ -12,5 +12,6 @@ namespace BDMS.Models
         public string DesignationName { get; set; }
         public string Remarks { get; set; }
         public string IsActive { get; set; }
+        public string User { get; set; }
     }
 }
