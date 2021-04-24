@@ -17,6 +17,12 @@ namespace BDMS.Business.Business.Designation
         {
             repo = _repo;
         }
+
+        public List<DesignationCommon> GetDesignationById(string id)
+        {
+            return repo.GetDesignationById(id);
+        }
+
         public List<DesignationCommon> List()
         {
             return repo.List();

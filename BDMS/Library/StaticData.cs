@@ -377,12 +377,13 @@ namespace MVCERP.Web.Library
            // if (HasRight(Control, AddEdit))
           // {
                 var enc = Base64Encode_URL(ExtraId.ToString());
-                if (Control.ToLower() == "taskmanager")
+                var enc1 = Base64Encode_URL(Id.ToString());
+                if (Control.ToLower() == "designation")
                 {
 
-                    link += "<a href='/" + Control + "/" +AddEdit +"?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
+                    link += "<a href='/" + Control + "/New" +"?id=" + enc1 + "' class='btn-action' title='Edit'><i class='ti ti-pencil'></i></a>";
 
-                    link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
+                    //link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
                 }
                 else if (Control.ToLower() == "member")
                 {

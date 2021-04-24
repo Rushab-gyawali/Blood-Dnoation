@@ -33,21 +33,25 @@ namespace BDMS.Controllers
             var data = buss.List();
             for (int i = 0; i < data.Count; i++)
             {
-                //data[i].Action = StaticData.GetActions("Donor", data[i].DonorId, data[i].DonorId.ToString(), "New");
+                data[i].Action = StaticData.GetActions("Designation", data[i].DesignationId, "New");
             }
             return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult New()
         {
-            string id = Request.QueryString["id"];
-            var DonorId = StaticData.Base64Encode_URL(id);
+            string Id = Request.QueryString["id"];
+            var id = StaticData.Base64Decode_URL(Id);
             var model = new DesignationModel();
-            if (DonorId == "")
+            if (id == "")
             {
                 return View();
             }
             else
             {
+                var data = buss.GetDesignationById(id);
+                model.DesignationId = data[0].DesignationId;
+                model.DesignationName = data[0].DesignationName;
+                model.Remarks = data[0].Remarks;
                 return View(model);
             }
         }
@@ -56,16 +60,16 @@ namespace BDMS.Controllers
         [HttpPost]
         public ActionResult New(DesignationModel model)
         {
+            ModelState.Remove("DesignationId");
             if (ModelState.IsValid)
             {
                 DesignationCommon common = new DesignationCommon();
-
                 common.DesignationId = model.DesignationId;
                 common.DesignationName = model.DesignationName;
                 common.Remarks = model.Remarks;               
                 common.User = model.User;
                 var response = buss.New(common);
-                //  StaticData.SetMessageInSession(response);
+                 //StaticData.SetMessageInSession(response);
                 if (response.ErrorCode == 0)
                 {
                     ModelState.AddModelError("", response.Message);
