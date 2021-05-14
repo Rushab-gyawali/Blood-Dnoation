@@ -34,7 +34,7 @@ namespace BDMS.Repository.Repository.Donor
                     {
                         var common = new DonorCommon()
                         {
-                            DonorId = Convert.ToInt32(item["DonorId"]),
+                            DonorId = item["DonorId"].ToString(),
                             FirstName = item["FirstName"].ToString(),
                             MiddleName = item["MiddleName"].ToString(),
                             LastName = item["LastName"].ToString(),
@@ -97,7 +97,7 @@ namespace BDMS.Repository.Repository.Donor
         public DbResponse New(DonorCommon model)
         {
             var sql = "EXEC proc_Donor ";
-            sql += "@Flag = "  +  dao.FilterString((model.DonorId > 0 ? "Update" : "Insert"));
+            sql += "@Flag = "  +  dao.FilterString((model.DonorId == "" ? "Update" : "Insert"));
             sql += ",@FirstName = " + dao.FilterString(model.FirstName);
             sql += ",@MiddleName = " + dao.FilterString(model.MiddleName);
             sql += ",@LastName = " + dao.FilterString(model.LastName);
@@ -111,7 +111,7 @@ namespace BDMS.Repository.Repository.Donor
             sql += ",@City = " + dao.FilterString(model.City);
             sql += ",@WardNo = " + model.WardNo;
             sql += ",@CreatedBy = " + model.CreatedBy;
-            if (model.DonorId == 0)
+            if (model.DonorId == "")
             {
                 return dao.ParseDbResponse(sql);
             }

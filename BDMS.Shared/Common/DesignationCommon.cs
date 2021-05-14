@@ -14,6 +14,6 @@ namespace BDMS.Shared.Common
         public string Remarks { get; set; }
         public string IsActive { get; set; }
         public string User { get; set; }
-
+        public string Action { get; set; }
     }
 }

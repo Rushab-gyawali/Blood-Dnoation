@@ -371,27 +371,27 @@ namespace MVCERP.Web.Library
         //    return response;
         //}
 
-        public static string GetActions(string Control, Int64 Id, string ExtraId = "", string AddEdit = "")
+        public static string GetActions(string Control, string Id, string ExtraId = "", string AddEdit = "")
         {
             var link = "";
            // if (HasRight(Control, AddEdit))
           // {
                 var enc = Base64Encode_URL(ExtraId.ToString());
-                if (Control.ToLower() == "taskmanager")
+                if (Control.ToLower() == "donor")
                 {
 
                     link += "<a href='/" + Control + "/" +AddEdit +"?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
 
                     link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
                 }
-                else if (Control.ToLower() == "member")
+                else if (Control.ToLower() == "designation")
                 {
 
                     link += "<div style='display:flex;justify-content:space-around;'><a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
 
                     link += "<a href='/" + Control + "/DeleteUser" +"?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
                 }
-                else if (Control.ToLower() == "backlog")
+                else if (Control.ToLower() == "staff")
                 {
 
                     link += "<div style='display:flex;justify-content:space-around;'><a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";

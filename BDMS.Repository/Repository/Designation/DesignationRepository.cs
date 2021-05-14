@@ -70,7 +70,9 @@ namespace BDMS.Repository.Repository.Designation
                         var common = new DesignationCommon()
                         {
                             SNo = sn,
-                            
+                            DesignationId= item["DesignationId"].ToString(),
+                            DesignationName = item["DesignationName"].ToString(),
+                            Remarks = item["Remarks"].ToString(),
                         };
                         sn++;
                         list.Add(common);

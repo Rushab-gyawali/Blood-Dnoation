@@ -74,7 +74,7 @@ namespace BDMS.Controllers
             {
                 DonorCommon common = new DonorCommon();
 
-                common.DonorId = Convert.ToInt32(model.Donorid);
+                common.DonorId = model.Donorid;
                 common.FirstName = model.FirstName;
                 common.MiddleName = model.MiddleName;
                 common.LastName = model.LastName;

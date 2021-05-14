@@ -7,7 +7,7 @@ namespace BDMS.Models
 {
     public class DonorModel
     {
-        public int Donorid { get; set; }
+        public string Donorid { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }

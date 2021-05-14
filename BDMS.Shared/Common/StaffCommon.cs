@@ -9,7 +9,7 @@ namespace BDMS.Shared.Common
     public class StaffCommon
     {
         public int SNNo { get; set; }
-        public int StaffId { get; set; }
+        public string StaffId { get; set; }
         public string FullName { get; set; }
         public string StaffFirstName { get; set; }
         public string StaffMiddleName { get; set; }

@@ -33,7 +33,7 @@ namespace BDMS.Controllers
             var data = buss.List();
             for (int i = 0; i < data.Count; i++)
             {
-                //data[i].Action = StaticData.GetActions("Donor", data[i].DonorId, data[i].DonorId.ToString(), "New");
+                data[i].Action = StaticData.GetActions("Designation", data[i].DesignationId, data[i].DesignationId.ToString(), "New");
             }
             return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }

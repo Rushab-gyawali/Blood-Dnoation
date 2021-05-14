@@ -29,7 +29,7 @@ namespace BDMS.Controllers
             var data = buss.List();
             for (int i = 0; i < data.Count; i++)
             {
-                data[i].Action = StaticData.GetActions("Donor", data[i].StaffId, data[i].StaffId.ToString(), "New");
+                data[i].Action = StaticData.GetActions("Staff", data[i].StaffId, data[i].StaffId.ToString(), "New");
             }
             return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }
@@ -72,7 +72,7 @@ namespace BDMS.Controllers
             {
                 StaffCommon common = new StaffCommon();
 
-                common.StaffId = Convert.ToInt32(model.StaffId);
+                common.StaffId = model.StaffId;
                 common.StaffFirstName = model.StaffFirstName;
                 common.StaffMiddleName = model.StaffMiddleName;
                 common.StaffLastName = model.StaffLastName;
