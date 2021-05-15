@@ -44,11 +44,11 @@
     <Compile Include="Common\Common.cs" />
     <Compile Include="Common\DbResponse.cs" />
     <Compile Include="Common\DesignationCommon.cs" />
+    <Compile Include="Common\DonationCommon.cs" />
     <Compile Include="Common\DonorCommon.cs" />
     <Compile Include="Common\ErrorLogsCommon.cs" />
     <Compile Include="Common\StaffCommon.cs" />
     <Compile Include="Common\StaticDataCommon.cs" />
-    <Compile Include="Common\UserCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

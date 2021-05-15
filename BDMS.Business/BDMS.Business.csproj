@@ -45,6 +45,8 @@
     <Compile Include="Business\Common\ICommonBusiness.cs" />
     <Compile Include="Business\Designation\DesignationBusiness.cs" />
     <Compile Include="Business\Designation\IDesignationBusiness.cs" />
+    <Compile Include="Business\Donation\DonationBusiness.cs" />
+    <Compile Include="Business\Donation\IDonationBusiness.cs" />
     <Compile Include="Business\Donor\IDonorBusiness.cs" />
     <Compile Include="Business\Donor\DonorBusiness.cs" />
     <Compile Include="Business\Error\ErrorBusiness.cs" />

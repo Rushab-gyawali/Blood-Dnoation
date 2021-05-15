@@ -139,6 +139,7 @@
     <Content Include="assets\images\blog\post-thumb1.jpg" />
     <Content Include="assets\images\blog\post-thumb2.jpg" />
     <Content Include="assets\images\blood donation.png" />
+    <Content Include="assets\images\blood.png" />
     <Content Include="assets\images\card\card-img1.jpg" />
     <Content Include="assets\images\card\card-img10.jpg" />
     <Content Include="assets\images\card\card-img2.jpg" />
@@ -216,6 +217,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Controllers\DesignationController.cs" />
+    <Compile Include="Controllers\DonationController.cs" />
     <Compile Include="Controllers\DonorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StaffController.cs" />
@@ -225,6 +227,7 @@
     </Compile>
     <Compile Include="Library\StaticData.cs" />
     <Compile Include="Models\DesignationModel.cs" />
+    <Compile Include="Models\DonationModel.cs" />
     <Compile Include="Models\DonorModel.cs" />
     <Compile Include="Models\StaffModel.cs" />
     <Compile Include="Models\UserModel.cs" />
@@ -252,6 +255,8 @@
     <Content Include="Views\Staff\New.cshtml" />
     <Content Include="Views\Designation\New.cshtml" />
     <Content Include="Views\Designation\Index.cshtml" />
+    <Content Include="Views\Home\DashBoard.cshtml" />
+    <Content Include="Views\Donation\Donation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

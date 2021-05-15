@@ -47,6 +47,8 @@
     <Compile Include="Repository\Common\ICommonRepository.cs" />
     <Compile Include="Repository\Designation\DesignationRepository.cs" />
     <Compile Include="Repository\Designation\IDesignationRepository.cs" />
+    <Compile Include="Repository\Donation\DonationRepository.cs" />
+    <Compile Include="Repository\Donation\IDonationRepository.cs" />
     <Compile Include="Repository\Donor\DonorRepository.cs" />
     <Compile Include="Repository\Donor\IDonorRepository.cs" />
     <Compile Include="Repository\Error\ErrorRepo.cs" />
