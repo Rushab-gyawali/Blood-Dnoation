@@ -9,7 +9,7 @@ namespace BDMS.Shared.Common
     public class DesignationCommon
     {
         public int SNo { get; set; }
-        public int DesignationId { get; set; }
+        public string DesignationId { get; set; }
         public string DesignationName { get; set; }
         public string Remarks { get; set; }
         public string IsActive { get; set; }

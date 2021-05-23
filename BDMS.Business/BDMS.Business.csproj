@@ -56,6 +56,8 @@
     <Compile Include="Business\Staff\StaffBusiness.cs" />
     <Compile Include="Business\StaticData\IStaticDataBusiness.cs" />
     <Compile Include="Business\StaticData\StaticDataBusiness.cs" />
+    <Compile Include="Business\User\IUserBusiness.cs" />
+    <Compile Include="Business\User\UserBusiness.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

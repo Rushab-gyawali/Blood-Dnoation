@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BDMS.Repository.Repository.Common
 {
-    public class CommonRepository
+    public class CommonRepository : ICommonRepository
     {
         RepositoryDao dao;
         public CommonRepository()

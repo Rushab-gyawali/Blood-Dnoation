@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BDMS.Shared.Common
 {
-    public class StaffCommon
+    public class StaffCommon : Common
     {
         public int SNNo { get; set; }
-        public int StaffId { get; set; }
+        public string StaffId { get; set; }
         public string FullName { get; set; }
         public string StaffFirstName { get; set; }
         public string StaffMiddleName { get; set; }
@@ -27,5 +27,8 @@ namespace BDMS.Shared.Common
         public string Designation { get; set; }
         public string DateOfBirth { get; set; }
         public string BloodGroup { get; set; }
+        public string Action { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
     }
 }

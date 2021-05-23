@@ -1,16 +1,20 @@
 ﻿@model BDMS.Shared.Common.DonorCommon
 @{ ViewBag.Title = "Donor";
-    Layout = "~/Views/Shared/_Layout.cshtml"; }
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var resp = BDMS.Library.StaticData.GetSessionMessage();
+    //var msg = "";
+    //var code = "";
+    //if (null != resp)
+    //{
+    //    msg = resp.Message;
+    //    code = resp.ErrorCode.ToString();
+    //}
+}
 
 
-@*
-    <th>ID</th>
-    <th>First Name</th>
-    <th>Last Name</th>
-    <th>Email</th>
-    <th>Phone Number</th>
-*@
-@*<script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>*@
+
+
+<script src="~/assets/js/vendor/jquery-2.2.4.min.js"></script>
 <script src="~/Scripts/jquery-3.5.1.js"></script>
 <script src="~/Scripts/datatable.min.js"></script>
 <script src="~/Scripts/Datatable.boostrap4.min.js"></script>
@@ -29,6 +33,7 @@
                                 <th>FullName</th>
                                 <th>Email</th>
                                 <th>Phone Number</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                     </table>
@@ -68,6 +73,7 @@
                 { 'data': 'FullName', "orderable": true },
                 { 'data': 'Email', "orderable": true },
                 { 'data': 'PhoneNo', "orderable": true },
+                { 'data': 'Action', "orderable": false },
 
             ],
             "columnDefs":

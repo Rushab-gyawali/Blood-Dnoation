@@ -33,22 +33,22 @@ namespace BDMS.Controllers
             var data = buss.List();
             for (int i = 0; i < data.Count; i++)
             {
-                data[i].Action = StaticData.GetActions("Designation", data[i].DesignationId, "New");
+                data[i].Action = StaticData.GetActions("Designation", data[i].DesignationId, data[i].DesignationId.ToString(), "New");
             }
             return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }
         public ActionResult New()
         {
-            string Id = Request.QueryString["id"];
-            var id = StaticData.Base64Decode_URL(Id);
+            string id = Request.QueryString["id"];
+            var designationId = StaticData.Base64Decode_URL(id);
             var model = new DesignationModel();
-            if (id == "")
+            if (designationId == "")
             {
                 return View();
             }
             else
             {
-                var data = buss.GetDesignationById(id);
+                var data = buss.GetDesignationById(designationId);
                 model.DesignationId = data[0].DesignationId;
                 model.DesignationName = data[0].DesignationName;
                 model.Remarks = data[0].Remarks;
@@ -60,22 +60,22 @@ namespace BDMS.Controllers
         [HttpPost]
         public ActionResult New(DesignationModel model)
         {
-            ModelState.Remove("DesignationId");
             if (ModelState.IsValid)
             {
                 DesignationCommon common = new DesignationCommon();
+
                 common.DesignationId = model.DesignationId;
                 common.DesignationName = model.DesignationName;
                 common.Remarks = model.Remarks;               
                 common.User = model.User;
                 var response = buss.New(common);
-                 //StaticData.SetMessageInSession(response);
+                //  StaticData.SetMessageInSession(response);
                 if (response.ErrorCode == 0)
                 {
                     ModelState.AddModelError("", response.Message);
-                    return RedirectToAction("Index", "Designation");
+                    return View(model);
                 }
-                return View(model);
+                return RedirectToAction("Index", "Designation");
             }
             else
             {
@@ -85,7 +85,7 @@ namespace BDMS.Controllers
 
                 ModelState.AddModelError("", errors);
             }
-            ViewData["msg"] = "An error occured while registering the Designation";
+            ViewData["msg"] = "An error occured while registering the Donor";
             return View(model);
         }
     }

@@ -47,6 +47,7 @@
     <Compile Include="Common\DonationCommon.cs" />
     <Compile Include="Common\DonorCommon.cs" />
     <Compile Include="Common\ErrorLogsCommon.cs" />
+    <Compile Include="Common\LoginCommon.cs" />
     <Compile Include="Common\StaffCommon.cs" />
     <Compile Include="Common\StaticDataCommon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

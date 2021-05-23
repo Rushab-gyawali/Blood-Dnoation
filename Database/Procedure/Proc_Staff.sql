@@ -1,6 +1,7 @@
 CREATE OR ALTER PROC proc_Staff
 (
-@flag			Nvarchar(200)				=null
+ @flag			Nvarchar(200)				=null
+,@StaffId        int                       =null
 ,@user			Nvarchar(200)				=null
 ,@staffFirstName			Nvarchar(200)	=null
 ,@StaffMiddleName		Nvarchar(200)		=null
@@ -12,17 +13,21 @@ CREATE OR ALTER PROC proc_Staff
 ,@District NVARCHAR(100)				= NULL
 ,@Munciplity NVARCHAR(100)				= NULL
 ,@City NVARCHAR(100)					= NULL
+,@Designation NVARCHAR(100)					= NULL
 ,@StaffAddress NVARCHAR(100)			= NULL
 ,@WardNo INT							= NULL
 ,@CreatedBy NVARCHAR(100)				= NULL
 ,@CreatedDate DATETIME					= NULL
+,@BloodGroup NVARCHAR(50) = NULL
+,@Password NVARCHAR(50) = NULL
+,@UserName NVARCHAR(50) = NULL
 )
 As 
 	Begin 
 	-----------------------------------------------------------------------------------------------------------------------------------------------
 			If(@flag = 'List')
 				Begin
-				SELECT * FROM TBL_STAFF (NOLOCK) WHERE IsActive = '1')
+				SELECT * FROM TBL_STAFF (NOLOCK) WHERE IsActive = '1' 
 				END
 	------------------------------------------------------------------------------------------------------------------------------------------------
 			If (@flag = 'InsertStaff')
@@ -44,7 +49,9 @@ As
 				CreatedDateUTC,
 				Designation,
 				DateOfBirth,
-				IsActive)
+				IsActive,
+				UserName,
+				[Password])
 				Values(
 				@staffFirstName,
 				@StaffMiddleName,
@@ -62,9 +69,25 @@ As
 				GETUTCDATE(),
 				'default',
 				@DateofBirth,
-				'1')
+				'1',
+				@UserName,
+				@Password)
 				SELECT '0' AS ErrorCode, 'Succesfully Added' As Msg
 			END
-			
+			IF(@flag ='getStaffById')
+			BEGIN
+			SELECT * FROM TBL_STAFF(NOLOCK) WHERE StaffId = @StaffId AND IsActive = '1'
+			END
+			IF(@Flag = 'Update')
+		BEGIN
+		UPDATE TBL_STAFF
+		SET StaffFirstName = @staffFirstName, StaffMiddleName = @StaffMiddleName,
+		StaffLastName = @StaffLastName,Gender = @Gender,
+		DateOfBirth= @DateofBirth,Email = @Email,PhoneNo = @PhoneNo ,
+		District=@District,Munciplity = @Munciplity,City = @City,WardNo = @WardNo,CreatedBy = 'admin', CreatedDate = GETDATE()
+		
+		Where StaffId = @StaffId
+		select '0' as ErrorCode,'Sucessfully Updated' as Msg
+		END
 	------------------------------------------------------------------------------------------------------------------------------------------------
 	End

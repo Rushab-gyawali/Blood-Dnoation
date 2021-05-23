@@ -17,6 +17,52 @@ namespace BDMS.Repository.Repository.Staff
             dao = new RepositoryDao();
 
         }
+
+        public List<StaffCommon> GetStaffByID(string id)
+        {
+            var list = new List<StaffCommon>();
+            try
+            {
+                var sql = "EXEC proc_Staff ";
+                sql += "@Flag = 'getStaffById'";
+                sql += ",@StaffId = " + dao.FilterString(id);
+                var dt = dao.ExecuteDataTable(sql);
+
+                if (null != dt)
+                {
+                    int sn = 1;
+                    foreach (System.Data.DataRow item in dt.Rows)
+                    {
+                        var common = new StaffCommon()
+                        {
+                            StaffId = item["StaffId"].ToString(),
+                            StaffFirstName = item["StaffFirstName"].ToString(),
+                            StaffMiddleName = item["StaffMiddleName"].ToString(),
+                            StaffLastName = item["StaffLastName"].ToString(),
+                            Gender = item["Gender"].ToString(),
+                            DateOfBirth = item["DateOfBirth"].ToString(),
+                            //BloodGroup = item["BloodGroup"].ToString(),
+                            Email = item["Email"].ToString(),
+                            PhoneNo = item["PhoneNo"].ToString(),
+                            District = item["District"].ToString(),
+                            Munciplity = item["Munciplity"].ToString(),
+                            City = item["City"].ToString(),
+                            StaffAddress = item["StaffAddress"].ToString(),
+                            WardNo = Convert.ToInt32(item["WardNo"]),
+                            Designation = item["Designation"].ToString(),
+                        };
+                        sn++;
+                        list.Add(common);
+                    }
+                }
+                return list;
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
         public List<StaffCommon> List()
         {
             var list = new List<StaffCommon>();
@@ -34,6 +80,7 @@ namespace BDMS.Repository.Repository.Staff
                         var common = new StaffCommon()
                         {
                             SNNo = sn,
+                            StaffId = item["StaffId"].ToString(),
                             FullName = item["StaffFullName"].ToString(),
                             Designation = item["Designation"].ToString(),
                             PhoneNo = item["PhoneNo"].ToString(),
@@ -54,7 +101,7 @@ namespace BDMS.Repository.Repository.Staff
         public DbResponse New(StaffCommon common)
         {
             var sql = "EXEC proc_Staff ";
-            sql += "@Flag = " + dao.FilterString((common.StaffId > 0 ? "Update" : "InsertStaff"));
+            sql += "@Flag = " + dao.FilterString((common.StaffId == null ?  "InsertStaff" : "Update"));
             sql += ",@StaffFirstName = " + dao.FilterString(common.StaffFirstName);
             sql += ",@StaffMiddleName = " + dao.FilterString(common.StaffMiddleName);
             sql += ",@StaffLastName = " + dao.FilterString(common.StaffLastName);
@@ -67,13 +114,16 @@ namespace BDMS.Repository.Repository.Staff
             sql += ",@Munciplity = " + dao.FilterString(common.Munciplity);
             sql += ",@City = " + dao.FilterString(common.City);
             sql += ",@WardNo = " + dao.FilterString(common.WardNo.ToString());
-            if (common.StaffId == 0)
+            sql += ",@UserName = " + dao.FilterString(common.UserName.ToString());
+            sql += ",@Password = " + dao.FilterString(common.Password.ToString());
+            if (common.StaffId == null)
             {
                 sql += ",@CreatedBy = 'system'";
                 return dao.ParseDbResponse(sql);
             }
             else
             {
+                sql += ",@StaffId = " + dao.FilterString(common.StaffId.ToString());
                 return dao.ParseDbResponse(sql);
             }
         }

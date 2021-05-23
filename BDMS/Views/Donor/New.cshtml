@@ -12,6 +12,7 @@
                 <div class="form-row">
                     <div class="col-md-4 mb-3">
                         <label for="validationCustom01">First name</label>
+                        @Html.HiddenFor(d => d.Donorid)
                         @Html.TextBoxFor(d => d.FirstName, new { @class = "form-control", @id = "validationCustom01", @placeholder = "First Name", required = "" })
                         <div class="valid-feedback">
                             Looks good!
@@ -32,7 +33,7 @@
                 <div class="form-row">
                     <div class="col-md-3 mb-3">
                         <label for="validationCustom02">Gender</label>
-                        @Html.TextBoxFor(d => d.Gender, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Choode your gender", required = "" })
+                        @Html.DropDownListFor(d => d.Gender,Model.GenderList, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Choode your gender", required = "" })
                     </div>
                     <div class="col-md-3 mb-2">
                         <label for="validationCustom03">Date Of Birth</label>
@@ -42,7 +43,7 @@
                     </div>
                     <div class="col-md-2 mb-2">
                         <label for="validationCustom04">Blood Group</label>
-                        @Html.TextBoxFor(d => d.BloodGroup, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Choode your Blood Group", required = "" })
+                        @Html.DropDownListFor(d => d.BloodGroup, Model.BloodGrouplist, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Choode your Blood Group", required = "" })
                         <div class="invalid-feedback">
                             Please select a BloodGroup.
                         </div>

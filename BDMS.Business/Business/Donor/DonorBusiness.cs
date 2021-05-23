@@ -16,6 +16,11 @@ namespace BDMS.Business.Business.Donor
             repo = _repo;
         }
 
+        public List<DonorCommon> GetDonorsByID(string id)
+        {
+            return repo.GetDonorsByID(id);
+        }
+
         public List<DonorCommon> List()
         {
             return repo.List();

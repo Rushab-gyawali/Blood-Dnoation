@@ -58,6 +58,8 @@
     <Compile Include="Repository\Staff\StaffRepository.cs" />
     <Compile Include="Repository\StaticData\IStaticDataRepository.cs" />
     <Compile Include="Repository\StaticData\StaticDataRepository.cs" />
+    <Compile Include="Repository\User\IUserRepository.cs" />
+    <Compile Include="Repository\User\UserRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BDMS.Shared\BDMS.Shared.csproj">

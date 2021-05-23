@@ -12,6 +12,5 @@ namespace BDMS.Repository.Repository.Designation
         List<DesignationCommon> List();
         DbResponse New(DesignationCommon common);
         List<DesignationCommon> GetDesignationById(string id);
-
     }
 }

@@ -11,10 +11,10 @@ namespace BDMS.Business.Business.Common
 {
     public class CommonBusiness : ICommonBusiness
     {
-        BDMS.Repository.Repository.Common.ICommonRepository repo;
+        ICommonRepository repo;
         public CommonBusiness(CommonRepository _repo)
         {
-           // repo = _repo;
+            repo = _repo; 
         }
 
         public Dictionary<string, string> StaticDropdown(string ddlName)

@@ -6,11 +6,16 @@ CREATE OR ALTER PROCEDURE PROC_DESIGNATION
 ,@Remarks			Nvarchar(500)		= Null
 ,@User				Nvarchar(100)		= Null
 )
-As 
-	Begin
-		If(@Flag = 'List')
+AS 
+	BEGIN
+		IF(@Flag = 'List')
 		BEGIN
-		SELECT RowId,DesignationName FROM TBL_DESIGNATION (NOLOCK)
+		SELECT * FROM TBL_DESIGNATION (NOLOCK)
+		END
+
+		ELSE IF(@Flag='GetDesignationById')
+		BEGIN
+		SELECT * FROM TBL_DESIGNATION where DesignationId =@DesignationId
 		END
 
 		ELSE IF (@Flag = 'Insert')
@@ -24,9 +29,9 @@ As
 			BEGIN TRY
 			    BEGIN TRANSACTION;			    
 			    INSERT INTO TBL_DESIGNATION
-			    (DesignationName,Remarks,CreatedBy,CreatedDate,IsActive)
+			    (DesignationId,DesignationName,Remarks,CreatedBy,CreatedDate,IsActive)
 				VALUES
-			    (@Designationname,@Remarks,'system',GETDATE(),'1');            
+			    (@DesignationId,@Designationname,@Remarks,@User,GETDATE(),'1');            
 			    BEGIN
 			        COMMIT TRANSACTION;
 			        SELECT '0' errorCode,'Designation Added Succesfully' msg;
@@ -42,25 +47,20 @@ As
 			    END;
 			END CATCH;
 		END;
-		ELSE IF (@Flag= 'GetDesignationById')
-		Select * from TBL_Designation (NOLOCK) WHERE RowId = @DesignationId 
-		Else If(@Flag = 'Update')
+		ELSE IF (@Flag = 'Update')
 		 BEGIN        
-			IF NOT EXISTS (SELECT 'X' FROM TBL_DESIGNATION WHERE RowId = @DesignationId)
+			IF EXISTS (SELECT 'X' FROM TBL_DESIGNATION WHERE DesignationName <> @Designationname)
 			BEGIN
 			    SELECT 1 AS ErrorCode,
-			           'Designation doesnot exist!' AS [Message];
+			           'Designation Not Exists!' AS [Message];
 			END;
 			ELSE
 			BEGIN TRY
 			    BEGIN TRANSACTION;			    
-				UPDATE TBL_DESIGNATION 
-				Set
-				 DesignationName = IsNull(@DesignationName,DesignationName)
-				,Remarks		 = ISNULL(@Remarks,Remarks)
-				,UpdatedBy		 = 'System'
-				,UpdatedDate	 = GETDATE()
-				 BEGIN
+			    UPDATE  TBL_DESIGNATION SET
+			    DesignationId=@DesignationId,DesignationName=@Designationname,Remarks=@Remarks,CreatedBy=@User,CreatedDate=GETDATE(),IsActive='1'
+	            where DesignationId= @DesignationId
+			    BEGIN
 			        COMMIT TRANSACTION;
 			        SELECT '0' errorCode,'Designation Updated Succesfully' msg;
 			    END;
@@ -76,4 +76,5 @@ As
 			END CATCH;
 		END;
 
-	END
+		
+END

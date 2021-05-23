@@ -12,6 +12,7 @@
             <div class="form-row">
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom01">First name</label>
+                    @Html.HiddenFor(d => d.StaffId)
                     @Html.TextBoxFor(d => d.StaffFirstName, new { @class = "form-control", @id = "validationCustom01", @placeholder = "First Name", required = "" })
                     <div class="valid-feedback">
                         Looks good!
@@ -88,8 +89,22 @@
                 <div class="col-md-4 mb-3">
                     <label for="validationCustom05">StaffAddress</label>
                     @Html.TextBoxFor(d => d.StaffAddress, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your Address", required = "" })
+                    <div class="invalid-feedback">
+                        Please provide a valid Address.
+                    </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">UserName</label>
+                    @Html.TextBoxFor(d => d.UserName, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your UserName", required = "" })
                 <div class="invalid-feedback">
-                    Please provide a valid Address.
+                    Please provide a valid UserName.
+                </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationCustom05">Password</label>
+                    @Html.TextBoxFor(d => d.Password, new { @Class = "form-control", @id = "validationCustom02", @placeholder = "Enter Your Password", required = "" })
+                <div class="invalid-feedback">
+                    Please provide a valid Password.
                 </div>
                 </div>
             </div>

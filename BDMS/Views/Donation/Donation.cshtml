@@ -1,8 +1,81 @@
-﻿
+﻿@model BDMS.Models.DonationModel
 @{
     ViewBag.Title = "Donation";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Donation</h2>
+@using (Html.BeginForm("Donation", "Donation", FormMethod.Post, new { @id = "Singupform" }))
+{
+    <div class="card" style="width:500Px">
+        <div class="card-body">
+            <form>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="validationCustom03">Choose Donor</label>
+                        @Html.DropDownListFor(x => x.DonorId, Model.DonorList, new { @placeholder = "Choose Donor", @class = "form-control", @id = "DonorList", @required = "required" ,@onchange = "getlastdonationdata($('#DonorList').val())" })
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="validationCustom03">Last Date Of Donation</label>
+                        @Html.TextBoxFor(d => d.PreviousDonationDate, new { @Class = "form-control", @id = "PreviousDonationDate", @readonly = "true" })
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="validationCustom03">Date Of Donation</label>
+                        @Html.TextBoxFor(d => d.DateOfDonation, new { @Class = "form-control", @id = "DateOfDonation", @type = "date", required = "" })
+                        <div class="invalid-feedback">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-primary pull-right" type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+} 
+<script>
 
+        const { parseJSON } = require("jquery");
+
+
+        function getlastdonationdata(DonorId) {
+            debugger;
+            var data = {
+                donorId: DonorId
+            };
+            $.ajax({
+                type: "POST",
+                url: "/Donation/GetLastdonatedDate",
+                data: JSON.stringify(data),
+                dataType: "json",
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    //var data = parseJSON(data);
+                    console.log(data);
+                    $("#PreviousDonationDate").val(data[0].PreviousDonationDate);
+                },
+                error: function (e) {
+                    alert(e);
+                }
+
+            });
+    }
+    //function Validate() {
+    //    lastdate = $("#PreviousDonationDate").val();
+    //    newdate = $("#DateOfDonation").val();
+    //    if ()
+
+    //Swal.fire({
+    //    icon: 'error',
+    //    title: 'Not Eligble...',
+    //    text: 'you can donate blood only after 35 days of last donation donation!'
+    //})
+
+</script>

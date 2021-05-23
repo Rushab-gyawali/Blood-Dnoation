@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BDMS.Shared.Common;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -219,26 +220,26 @@ namespace MVCERP.Web.Library
                 sb.Append(" Paisa");
             return sb.ToString().TrimEnd() + " only";
         }
-        
-        //public static DbResponse GetSessionMessage()
-        //{
-        //    var resp = HttpContext.Current.Session["Msg"] as MVCERP.Shared.Common.DbResponse;
-        //    HttpContext.Current.Session.Remove("Msg");
-        //    return resp;
-        //}
-        //public static void SetMessageInSession(DbResponse resp)
-        //{
-        //    HttpContext.Current.Session["Msg"] = resp;
-        //}
-        //public static void SetMessageInSession(int code, string Msg)
-        //{
-        //    var resp = new DbResponse()
-        //    {
-        //        ErrorCode = code,
-        //        Message = Msg
-        //    };
-        //    SetMessageInSession(resp);
-        //}
+
+        public static DbResponse GetSessionMessage()
+        {
+            var resp = HttpContext.Current.Session["Msg"] as BDMS.Shared.Common.DbResponse;
+            HttpContext.Current.Session.Remove("Msg");
+            return resp;
+        }
+        public static void SetMessageInSession(DbResponse resp)
+        {
+            HttpContext.Current.Session["Msg"] = resp;
+        }
+        public static void SetMessageInSession(int code, string Msg)
+        {
+            var resp = new DbResponse()
+            {
+                ErrorCode = code,
+                Message = Msg
+            };
+            SetMessageInSession(resp);
+        }
         public static string ReadWebConfig(string key)
         {
             return ReadWebConfig(key, "");
@@ -371,31 +372,30 @@ namespace MVCERP.Web.Library
         //    return response;
         //}
 
-        public static string GetActions(string Control, Int64 Id, string ExtraId = "", string AddEdit = "")
+        public static string GetActions(string Control, string Id, string ExtraId = "", string AddEdit = "")
         {
             var link = "";
            // if (HasRight(Control, AddEdit))
           // {
                 var enc = Base64Encode_URL(ExtraId.ToString());
-                var enc1 = Base64Encode_URL(Id.ToString());
-                if (Control.ToLower() == "designation")
+                if (Control.ToLower() == "donor")
                 {
 
-                    link += "<a href='/" + Control + "/New" +"?id=" + enc1 + "' class='btn-action' title='Edit'><i class='ti ti-pencil'></i></a>";
+                    link += "<a href='/" + Control + "/" +AddEdit +"?id=" + enc + "' class='btn-action' title='Edit'><i class='fa fa-pencil'></i></a>";
 
-                    //link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
+                    link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a>";
                 }
-                else if (Control.ToLower() == "member")
+                else if (Control.ToLower() == "designation")
                 {
 
-                    link += "<div style='display:flex;justify-content:space-around;'><a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
+                    link += "<a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='fa fa-pencil'></i></a>";
 
-                    link += "<a href='/" + Control + "/DeleteUser" +"?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
+                    link += "<a href='/" + Control + "/DeleteUser" +"?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a>";
                 }
-                else if (Control.ToLower() == "backlog")
+                else if (Control.ToLower() == "staff")
                 {
 
-                    link += "<div style='display:flex;justify-content:space-around;'><a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='mdi mdi-pencil'></i></a>";
+                    link += "<div style='display:flex;justify-content:space-around;'><a href='/" + Control + "/" + AddEdit + "?id=" + enc + "' class='btn-action' title='Edit'><i class='fa fa-pencil'></i></a>";
                     link += "<a href='/" + Control + "/DeleteTask" + "?id=" + enc + "' class='btn-action' title='Delete'><i class='mdi mdi-delete'></i></a></div>";
 
                 }

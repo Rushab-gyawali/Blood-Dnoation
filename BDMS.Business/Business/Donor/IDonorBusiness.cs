@@ -11,5 +11,6 @@ namespace BDMS.Business.Business.Donor
     {
         List<DonorCommon> List();
         DbResponse New(DonorCommon model);
+        List<DonorCommon> GetDonorsByID(string id);
     }
 }

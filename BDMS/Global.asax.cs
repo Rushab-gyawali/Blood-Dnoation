@@ -16,5 +16,18 @@ namespace BDMS
 
             Bootstrapper.Initialise();
         }
+        protected void Application_Error()
+        {
+            HttpException err = Server.GetLastError() as HttpException;
+            var exc = Server.GetLastError();
+            System.Diagnostics.Debug.WriteLine(exc);
+            if (err != null)
+            {
+                var page = HttpContext.Current.Request.Url.ToString();
+                //StaticData.LogError(err, page);
+            }
+
+            Server.ClearError();
+        }
     }
 }

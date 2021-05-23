@@ -43,8 +43,7 @@
                 "url": "/Designation/List",
                 "contentType": 'application/json; charset=utf-8',
                 'data': function (data) {
-                    return data = JSON.stringify(data);
-                    debugger;
+                    return data = JSON.stringify(data);             
                     console.log(data);
                 }
             },
@@ -60,13 +59,12 @@
             columns: [
                 { 'data': 'SNo', "orderable": true, "searchable": true },
                 { 'data': 'DesignationName', "orderable": true },
-                { 'data': 'Action', "orderable": false },
+                { 'data': 'Action', "orderable": true },
 
             ],
             "columnDefs":
                 [
                     { "className": "dt-center", "targets": "4" },
-                    //  { "targets": 1, "className": "text-right" }
                 ]
         });
     });

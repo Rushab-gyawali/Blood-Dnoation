@@ -11,5 +11,6 @@ namespace BDMS.Repository.Repository.Staff
     {
         List<StaffCommon> List();
         DbResponse New(StaffCommon common);
+        List<StaffCommon> GetStaffByID(string id);
     }
 }

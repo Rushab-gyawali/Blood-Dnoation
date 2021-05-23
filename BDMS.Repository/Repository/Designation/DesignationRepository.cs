@@ -1,7 +1,6 @@
 ﻿using BDMS.Shared.Common;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,29 +18,38 @@ namespace BDMS.Repository.Repository.Designation
 
         }
 
-        public List<DesignationCommon> GetDesignationById(string id)
+        public List<DesignationCommon> GetDesignationById(string designationId)
         {
             var list = new List<DesignationCommon>();
-            var sql = "EXEC proc_Designation ";
-            sql += "@Flag = 'GetDesignationById'";
-            sql += ",@Designationid = " + dao.FilterString(id);
-            var dt = dao.ExecuteDataTable(sql);
-            if (null != dt)
+            try
             {
-                int sn = 1;
-                foreach (DataRow item in dt.Rows)
+                var sql = "EXEC proc_Designation ";
+                sql += "@Flag = 'List'";
+                sql += ",@DesignationId = " + dao.FilterString(designationId);
+                var dt = dao.ExecuteDataTable(sql);
+
+                if (null != dt)
                 {
-                    var common = new DesignationCommon
+                    int sn = 1;
+                    foreach (System.Data.DataRow item in dt.Rows)
                     {
-                        DesignationId = Convert.ToInt32(item["RowId"]),
-                        DesignationName = item["DesignationName"].ToString(),
-                        Remarks = item["Remarks"].ToString()
-                    };
-                    sn++;
-                    list.Add(common);
+                        var common = new DesignationCommon()
+                        {
+                            DesignationId = item["DesignationId"].ToString(),
+                            DesignationName =item["DesignationName"].ToString(),
+                            Remarks =item["Remarks"].ToString(),
+
+                        };
+                        sn++;
+                        list.Add(common);
+                    }
                 }
+                return list;
             }
-            return list;
+            catch (Exception e)
+            {
+                return list;
+            }
         }
 
         public List<DesignationCommon> List()
@@ -61,14 +69,15 @@ namespace BDMS.Repository.Repository.Designation
                         var common = new DesignationCommon()
                         {
                             SNo = sn,
-                            DesignationId = Convert.ToInt32(item["RowId"]),
-                            DesignationName = item["DesignationName"].ToString()
+                            DesignationId= item["RowId"].ToString(),
+                            DesignationName = item["DesignationName"].ToString(),
+                            Remarks = item["Remarks"].ToString(),
                         };
                         sn++;
                         list.Add(common);
                     }
                 }
-                return list;
+                 return list;
             }
             catch (Exception e)
             {
@@ -78,18 +87,19 @@ namespace BDMS.Repository.Repository.Designation
 
         public DbResponse New(DesignationCommon common)
         {
-            //throw new NotImplementedException();
-            var sql = "EXEC proc_Designation ";
-            sql += "@Flag = " + dao.FilterString(common.DesignationId > 0 ?"Update" : "Insert");
-            sql += ",@DesignationName = " + dao.FilterString(common.DesignationName);
+
+            var sql = "EXEC proc_Donor ";
+            sql += "@Flag = " + dao.FilterString((common.DesignationId == "" ? "Insert":"Update"  ));
+            sql += ",@DesignationId = " + dao.FilterString(common.DesignationId);
+            sql += ",@Designationname = " + dao.FilterString(common.DesignationName);
             sql += ",@Remarks = " + dao.FilterString(common.Remarks);
-            if (common.DesignationId == 0)
+
+            if (common.DesignationId == "")
             {
                 return dao.ParseDbResponse(sql);
             }
             else
             {
-                sql += ",@DesignationId = " + dao.FilterString(common.DesignationId.ToString());
                 return dao.ParseDbResponse(sql);
             }
         }

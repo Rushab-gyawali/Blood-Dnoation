@@ -29,18 +29,16 @@ namespace BDMS.Controllers
             var data = buss.List();
             for (int i = 0; i < data.Count; i++)
             {
-                //data[i].Action = StaticData.GetActions("Donor", data[i].DonorId, data[i].DonorId.ToString(), "New");
+                data[i].Action = StaticData.GetActions("Staff", data[i].StaffId, data[i].StaffId.ToString(), "New");
             }
             return Json(new { data = data }, JsonRequestBehavior.AllowGet);
         }
 
 
-
-
         public ActionResult New()
         {
             string id = Request.QueryString["id"];
-            var StaffId = StaticData.Base64Encode(id);
+            var StaffId = StaticData.Base64Decode_URL(id);
             var model = new StaffModel();
             if (StaffId == "")
             {
@@ -48,6 +46,22 @@ namespace BDMS.Controllers
             }
             else
             {
+                var data = buss.GetStaffByID(StaffId);
+                model.StaffId = data[0].StaffId;
+                model.StaffFirstName = data[0].StaffFirstName;
+                model.StaffMiddleName = data[0].StaffMiddleName;
+                model.StaffLastName = data[0].StaffLastName;
+                model.Gender = data[0].Gender;
+                model.DateOfBirth = data[0].DateOfBirth;
+                model.Email = data[0].Email;
+                model.BloodGroup = data[0].BloodGroup;
+                model.PhoneNo = data[0].PhoneNo;
+                model.District = data[0].District;
+                model.BloodGroup = data[0].BloodGroup;
+                model.WardNo = data[0].WardNo;
+                model.City = data[0].City;
+                model.Munciplity = data[0].Munciplity;
+                model.Designation = data[0].Designation;
                 return View(model);
             }
         }
@@ -58,7 +72,7 @@ namespace BDMS.Controllers
             {
                 StaffCommon common = new StaffCommon();
 
-                common.StaffId = Convert.ToInt32(model.StaffId);
+                common.StaffId = model.StaffId;
                 common.StaffFirstName = model.StaffFirstName;
                 common.StaffMiddleName = model.StaffMiddleName;
                 common.StaffLastName = model.StaffLastName;
@@ -70,11 +84,14 @@ namespace BDMS.Controllers
                 common.District = model.District;
                 common.Munciplity = model.Munciplity;
                 common.City = model.City;
+                common.Designation = model.Designation;
                 common.WardNo = Convert.ToInt32(model.WardNo);
                 common.StaffAddress = model.StaffAddress;
+                common.UserName = model.UserName;
+                common.Password = StaticData.Base64Encode(model.Password);
                 var response = buss.New(common);
                 //StaticData.SetMessageInSession(response);
-                if (response.ErrorCode == 0)
+                if (response.ErrorCode == 1)
                 {
                     ModelState.AddModelError("", response.Message);
                     return View(model);
@@ -92,5 +109,6 @@ namespace BDMS.Controllers
             ViewData["msg"] = "An error occured while registering the staff";
             return View(model);
         }
+       
     }
 }

@@ -13,5 +13,6 @@ namespace BDMS.Controllers
         {
             return View();
         }
+
     }
 }

@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace BDMS.Models
 {
     public class DonorModel
     {
-        public int Donorid { get; set; }
+        public string Donorid { get; set; }
         public string FirstName { get; set; }
         public string MiddleName { get; set; }
         public string LastName { get; set; }
@@ -22,5 +23,7 @@ namespace BDMS.Models
         public int WardNo { get; set; }
         public string CreatedBy { get; set; }
         public string IsActive { get; set; }
+        public IEnumerable<SelectListItem> GenderList { get; set; }
+        public IEnumerable<SelectListItem> BloodGrouplist { get; set; }
     }
 }

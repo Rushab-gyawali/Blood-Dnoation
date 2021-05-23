@@ -1,12 +1,16 @@
 using System.Web.Mvc;
 using BDMS.Business.Business.Common;
 using BDMS.Business.Business.Designation;
+using BDMS.Business.Business.Donation;
 using BDMS.Business.Business.Donor;
 using BDMS.Business.Business.Error;
 using BDMS.Business.Business.Staff;
+using BDMS.Business.Business.User;
 using BDMS.Repository.Repository.Designation;
+using BDMS.Repository.Repository.Donation;
 using BDMS.Repository.Repository.Donor;
 using BDMS.Repository.Repository.Staff;
+using BDMS.Repository.Repository.User;
 using Microsoft.Practices.Unity;
 using Unity.Mvc3;
 
@@ -37,7 +41,10 @@ namespace BDMS
             container.RegisterType<IStaffRepository, StaffRepository>();
             container.RegisterType<IDesignationBusiness, DesignationBusiness>();
             container.RegisterType<IDesignationRepository, DesignationRepository>();
-
+            container.RegisterType<IDonationBusiness, DonationBusiness>();
+            container.RegisterType<IDonationRepository, DonationRepository>();
+            container.RegisterType<IUserBusiness, UserBusiness>();
+            container.RegisterType<IUserRepository, UserRepository>();
 
             return container;
         }
